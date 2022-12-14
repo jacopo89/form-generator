@@ -1,0 +1,31 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import FormElementGenerator from "./FormElementGenerator";
+import { useContext } from "react";
+import FormGeneratorContext from "../form-context/FormGeneratorContext";
+import { getAccessorElementsNoIndex } from "./utils/form-generator-utils";
+function getElement(elements, accessorParsed) {
+    let element = null;
+    let haystack = elements;
+    accessorParsed.forEach((accessor) => {
+        if (haystack === undefined)
+            return;
+        if (Array.isArray(haystack)) {
+            const piece = haystack.find(formElement => formElement.accessor === accessor);
+            // @ts-ignore
+            haystack = piece === null || piece === void 0 ? void 0 : piece.formElements;
+            element = piece;
+        }
+    });
+    return element;
+}
+export default function FormElement({ accessor, nestedForm }) {
+    const { values, errors, touched, setFieldValue, elements, accessorRoot, disable } = useContext(FormGeneratorContext);
+    const accessorParsed = getAccessorElementsNoIndex(accessor);
+    const element = getElement(elements, accessorParsed);
+    const finalAccessor = accessor;
+    if (element) {
+        // @ts-ignore
+        return _jsx(FormElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { disable: disable, accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }));
+    }
+    return _jsx("div", { children: accessor });
+}
