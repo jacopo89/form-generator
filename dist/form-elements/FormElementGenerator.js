@@ -12,6 +12,7 @@ import FileFormField from "./fields/FileFormField";
 import DateFormField from "./fields/DateFormField";
 import CountriesFormField from "./fields/CountriesFormField";
 import PasswordFormField from "./fields/PasswordFormField";
+import FloatFormField from "./fields/FloatFormField";
 export default function FormElementGenerator(props) {
     const { type } = props;
     switch (type) {
@@ -49,6 +50,9 @@ export default function FormElementGenerator(props) {
         }
         case "password": {
             return _jsx(PasswordFormField, Object.assign({}, props));
+        }
+        case "float": {
+            return _jsx(FloatFormField, Object.assign({}, props));
         }
     }
     return _jsx(_Fragment, {});

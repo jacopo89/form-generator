@@ -13,8 +13,9 @@ import DateFormField, {DateElementInterface} from "./fields/DateFormField";
 import {CountriesElementInterface} from "../ElementInterface";
 import CountriesFormField, {CountriesFormElementInterface} from "./fields/CountriesFormField";
 import PasswordFormField, {PasswordElementInterface} from "./fields/PasswordFormField";
+import FloatFormField, {FloatElementInterface} from "./fields/FloatFormField";
 
-export type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface |WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface
+export type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface |WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface | FloatElementInterface
 
 export default function FormElementGenerator(props: GenericFormElementInterface) {
     const {type} = props
@@ -53,6 +54,9 @@ export default function FormElementGenerator(props: GenericFormElementInterface)
         }
         case "password":{
             return <PasswordFormField {...props}/>
+        }
+        case "float":{
+            return <FloatFormField {...props}/>
         }
     }
     return <></>

@@ -18,14 +18,16 @@ function getElement(elements, accessorParsed) {
     });
     return element;
 }
-export default function FormElement({ accessor, nestedForm }) {
+export default function FormElement({ accessor, nestedForm, options }) {
     const { values, errors, touched, setFieldValue, elements, accessorRoot, disable } = useContext(FormGeneratorContext);
     const accessorParsed = getAccessorElementsNoIndex(accessor);
     const element = getElement(elements, accessorParsed);
+    // @ts-ignore
+    const finalOptions = options || (element === null || element === void 0 ? void 0 : element.options);
     const finalAccessor = accessor;
     if (element) {
         // @ts-ignore
-        return _jsx(FormElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { disable: disable, accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }));
+        return _jsx(FormElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { disable: disable, accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor, options: finalOptions }));
     }
     return _jsx("div", { children: accessor });
 }

@@ -1,5 +1,5 @@
 import {Option} from "./form-elements/fields/SelectFormField";
-export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password"
+export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float"
 
 export default interface ElementInterface{
     Header:string,
@@ -67,7 +67,11 @@ export interface PasswordElementInterface extends ElementInterface{
     type:"password"
 }
 
+export interface FloatElementInterface extends ElementInterface{
+    type:"float"
+}
 
 
-export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface
+
+export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface
 export type FormElements = GenericElementInterface[]

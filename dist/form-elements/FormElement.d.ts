@@ -1,7 +1,9 @@
 /// <reference types="react" />
+import { Option } from "./fields/SelectFormField";
 interface FormElementInterface {
     accessor: string;
     nestedForm?: (index: number) => JSX.Element;
+    options?: Option[];
 }
-export default function FormElement({ accessor, nestedForm }: FormElementInterface): JSX.Element;
+export default function FormElement({ accessor, nestedForm, options }: FormElementInterface): JSX.Element;
 export {};
