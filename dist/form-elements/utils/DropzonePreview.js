@@ -1,5 +1,4 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import React from 'react';
 import { Col, Row, Spinner } from 'react-bootstrap';
 const DropzonePreview = ({ meta, fileWithMeta }) => {
     const { remove } = fileWithMeta;

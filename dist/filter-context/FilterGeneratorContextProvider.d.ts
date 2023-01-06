@@ -1,7 +1,7 @@
 /// <reference types="react" />
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import { GenericFilterInterface } from "../filter-elements/FilterElementInterface";
-type ConditionalProps = {
+declare type ConditionalProps = {
     accessorRoot?: string;
     onSubmit?: never;
     onChange: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>>;
@@ -10,7 +10,7 @@ type ConditionalProps = {
     onSubmit?: (values: any) => void | Promise<any>;
     onChange?: never;
 };
-type CommonProps = {
+declare type CommonProps = {
     elements: GenericFilterInterface[];
     validationSchema?: any;
     initialValues: FormikValues;
@@ -20,6 +20,6 @@ type CommonProps = {
     existingTouched?: FormikTouched<FormikValues> | undefined;
     formValue?: FormikValues | undefined;
 };
-type Props = CommonProps & ConditionalProps;
+declare type Props = CommonProps & ConditionalProps;
 export default function FilterGeneratorContextProvider({ formValue, elements, validationSchema, initialValues, onSubmit, children, existingValue, existingErrors, accessorRoot, onChange }: Props): JSX.Element;
 export {};

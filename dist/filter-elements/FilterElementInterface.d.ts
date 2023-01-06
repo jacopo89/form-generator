@@ -1,7 +1,7 @@
 import { Option } from "../form-elements/fields/SelectFormField";
 import { FormikValues } from "formik";
-export type FilterType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries";
-export type DateType = "after" | "before" | "between";
+export declare type FilterType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries";
+export declare type DateType = "after" | "before" | "between";
 export default interface FilterInterface {
     Header: string;
     accessor: string;
@@ -36,5 +36,5 @@ export interface DateFilterInterface extends FilterInterface {
     type: "date";
     dateType: DateType;
 }
-export type GenericFilterInterface = TextFilterInterface | SelectFilterInterface | CheckboxFilterInterface | RadioFilterInterface | TagsFilterInterface | NumberFilterInterface | DateFilterInterface | CountriesFilterInterface;
-export type FilterElements = GenericFilterInterface[];
+export declare type GenericFilterInterface = TextFilterInterface | SelectFilterInterface | CheckboxFilterInterface | RadioFilterInterface | TagsFilterInterface | NumberFilterInterface | DateFilterInterface | CountriesFilterInterface;
+export declare type FilterElements = GenericFilterInterface[];

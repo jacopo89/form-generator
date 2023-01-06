@@ -11,6 +11,7 @@ import EmbeddedFormField from "./fields/EmbeddedFormField";
 import FileFormField from "./fields/FileFormField";
 import DateFormField from "./fields/DateFormField";
 import CountriesFormField from "./fields/CountriesFormField";
+import PasswordFormField from "./fields/PasswordFormField";
 export default function FormElementGenerator(props) {
     const { type } = props;
     switch (type) {
@@ -45,6 +46,9 @@ export default function FormElementGenerator(props) {
         }
         case "countries": {
             return _jsx(CountriesFormField, Object.assign({}, props));
+        }
+        case "password": {
+            return _jsx(PasswordFormField, Object.assign({}, props));
         }
     }
     return _jsx(_Fragment, {});
