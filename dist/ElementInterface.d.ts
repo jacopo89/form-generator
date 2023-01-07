@@ -1,5 +1,5 @@
 import { Option } from "./form-elements/fields/SelectFormField";
-export declare type ElementType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float";
+export declare type ElementType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price";
 export default interface ElementInterface {
     Header: string;
     accessor: string;
@@ -56,5 +56,8 @@ export interface PasswordElementInterface extends ElementInterface {
 export interface FloatElementInterface extends ElementInterface {
     type: "float";
 }
-export declare type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface;
+export interface PriceElementInterface extends ElementInterface {
+    type: "price";
+}
+export declare type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface;
 export declare type FormElements = GenericElementInterface[];

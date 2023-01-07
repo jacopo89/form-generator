@@ -13,5 +13,6 @@ import { DateElementInterface } from "./fields/DateFormField";
 import { CountriesFormElementInterface } from "./fields/CountriesFormField";
 import { PasswordElementInterface } from "./fields/PasswordFormField";
 import { FloatElementInterface } from "./fields/FloatFormField";
-export declare type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface | FloatElementInterface;
+import { PriceElementInterface } from "./fields/PriceFormField";
+export declare type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface;
 export default function FormElementGenerator(props: GenericFormElementInterface): JSX.Element;

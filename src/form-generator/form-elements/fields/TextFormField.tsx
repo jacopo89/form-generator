@@ -15,6 +15,13 @@ export default function TextFormField(props:TextElementInterface){
     return <div className="filled form-group tooltip-end-top">
         <Form.Label>{Header}</Form.Label>
         <Form.Control disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
-        {nestedTouched && <div className="d-block">{errorMessage}</div>}
+        <Form.Control.Feedback
+            className="font-weight-bold"
+            type="invalid"
+            role="alert"
+            aria-label="from feedback"
+        >
+            {errorMessage}
+        </Form.Control.Feedback>
     </div>
 }
