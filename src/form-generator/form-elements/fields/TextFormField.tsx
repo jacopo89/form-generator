@@ -14,12 +14,13 @@ export default function TextFormField(props:TextElementInterface){
 
     return <Form.Group>
         <Form.Label>{Header}</Form.Label>
-        <Form.Control isValid={nestedTouched && !nestedError} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
+        <Form.Control isValid={nestedTouched && nestedError===undefined} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
         <Form.Control.Feedback
             className="font-weight-bold"
             type="invalid"
             role="alert"
             aria-label="from feedback"
+            tooltip
         >
             {nestedError}
         </Form.Control.Feedback>
