@@ -12,9 +12,9 @@ export default function TextFormField(props:TextElementInterface){
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
 
-    return <Form.Group>
+    return <Form.Group as={"div"} style={{position:"relative"}}>
         <Form.Label>{Header}</Form.Label>
-        <Form.Control isInvalid={nestedError!==undefined} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
+        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
         <Form.Control.Feedback
             className="font-weight-bold"
             type="invalid"
