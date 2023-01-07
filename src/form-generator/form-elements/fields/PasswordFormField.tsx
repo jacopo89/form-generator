@@ -2,6 +2,7 @@ import {Form} from "react-bootstrap";
 import React, {useEffect} from "react";
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import {getNestedValue} from "../utils/form-generator-utils";
+import {FormGroup} from "../utils/FormGroup";
 
 export interface PasswordElementInterface extends BasicFormElementInterface{
     type:"password"
@@ -9,12 +10,20 @@ export interface PasswordElementInterface extends BasicFormElementInterface{
 
 export default function PasswordFormField(props:PasswordElementInterface){
     const {type,disable, values, errors, touched,setFieldValue,accessor,Header} = props
-    const errorMessage = getNestedValue(accessor,errors)
+    const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
 
-    return <div className="filled form-group tooltip-end-top">
+    return <FormGroup>
         <Form.Label>{Header}</Form.Label>
-        <Form.Control disabled={disable} type="password" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
-        {nestedTouched && <div className="d-block">{errorMessage}</div>}
-    </div>
+        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} disabled={disable} type="password" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
+        <Form.Control.Feedback
+            className="font-weight-bold"
+            type="invalid"
+            role="alert"
+            aria-label="from feedback"
+            tooltip
+        >
+            {nestedError}
+        </Form.Control.Feedback>
+    </FormGroup>
 }
