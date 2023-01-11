@@ -1,6 +1,7 @@
 import { Option as SelectOption } from "./form-elements/fields/SelectFormField";
 import { Option as RadioOption } from "./form-elements/fields/RadioFormField";
-export declare type ElementType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price";
+export declare type ElementType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel";
+export declare type FileType = "*" | "image/*" | "application/*" | "application/pdf";
 export default interface ElementInterface {
     Header: string;
     accessor: string;
@@ -50,6 +51,7 @@ export interface EmbeddedElementInterface extends ElementInterface {
 }
 export interface FileElementInterface extends ElementInterface {
     type: "file";
+    accept: FileType;
 }
 export interface PasswordElementInterface extends ElementInterface {
     type: "password";
@@ -60,5 +62,8 @@ export interface FloatElementInterface extends ElementInterface {
 export interface PriceElementInterface extends ElementInterface {
     type: "price";
 }
-export declare type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface;
+export interface TelephoneElementInterface extends ElementInterface {
+    type: "tel";
+}
+export declare type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneElementInterface;
 export declare type FormElements = GenericElementInterface[];

@@ -6,13 +6,15 @@ import DropzonePreview from "../utils/DropzonePreview";
 import {readFile, readFiles} from "../utils/FileUploadedHelper";
 import 'react-dropzone-uploader/dist/styles.css'
 import {getNestedValue} from "../utils/form-generator-utils";
+import {FileType} from "../../ElementInterface";
 
 export interface FileFormElementInterface extends BasicFormElementInterface{
-    type:"file"
+    type:"file",
+    accept: FileType
 }
 
 export default function FileFormField(props:FileFormElementInterface){
-    const {type,values,disable, errors, touched,setFieldValue,accessor,Header} = props
+    const {type,values,disable, errors, touched,setFieldValue,accessor,Header, accept} = props
 
     const existingFile = getNestedValue(accessor,values)
     useEffect(()=>{
@@ -43,7 +45,7 @@ export default function FileFormField(props:FileFormElementInterface){
             }}
 
             PreviewComponent={DropzonePreview}
-            accept="image/*"
+            accept={accept}
             maxFiles={1}
             //SubmitButtonComponent={button}
             inputContent="Carica file"

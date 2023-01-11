@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import 'react-datepicker/dist/react-datepicker.css';
 export interface DateElementInterface extends BasicFormElementInterface {

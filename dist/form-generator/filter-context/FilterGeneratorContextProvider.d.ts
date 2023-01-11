@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import { GenericFilterInterface } from "../filter-elements/FilterElementInterface";
 declare type ConditionalProps = {

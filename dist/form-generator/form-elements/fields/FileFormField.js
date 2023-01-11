@@ -7,7 +7,7 @@ import { readFile } from "../utils/FileUploadedHelper";
 import 'react-dropzone-uploader/dist/styles.css';
 import { getNestedValue } from "../utils/form-generator-utils";
 export default function FileFormField(props) {
-    const { type, values, disable, errors, touched, setFieldValue, accessor, Header } = props;
+    const { type, values, disable, errors, touched, setFieldValue, accessor, Header, accept } = props;
     const existingFile = getNestedValue(accessor, values);
     useEffect(() => {
     }, [values]);
@@ -22,7 +22,7 @@ export default function FileFormField(props) {
                 }, onChangeStatus: (file, status, allFiles) => {
                     // @ts-ignore
                     readFile(file.file).then(result => setFieldValue(result));
-                }, PreviewComponent: DropzonePreview, accept: "image/*", maxFiles: 1, 
+                }, PreviewComponent: DropzonePreview, accept: accept, maxFiles: 1, 
                 //SubmitButtonComponent={button}
                 inputContent: "Carica file" }), !existingFile && disable && _jsx("div", { children: "Nessun file caricato" })] });
 }

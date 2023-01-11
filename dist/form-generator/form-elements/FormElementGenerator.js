@@ -10,6 +10,7 @@ import CollectionFormField from "./fields/CollectionFormField";
 import EmbeddedFormField from "./fields/EmbeddedFormField";
 import FileFormField from "./fields/FileFormField";
 import DateFormField from "./fields/DateFormField";
+import TelephoneFormField from "./fields/TelephoneFormField";
 import CountriesFormField from "./fields/CountriesFormField";
 import PasswordFormField from "./fields/PasswordFormField";
 import FloatFormField from "./fields/FloatFormField";
@@ -57,6 +58,9 @@ export default function FormElementGenerator(props) {
         }
         case "price": {
             return _jsx(PriceFormField, Object.assign({}, props));
+        }
+        case "tel": {
+            return _jsx(TelephoneFormField, Object.assign({}, props));
         }
     }
     return _jsx(_Fragment, {});

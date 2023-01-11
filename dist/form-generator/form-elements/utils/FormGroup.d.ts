@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface FormGroupInterface {
     children: any;
 }

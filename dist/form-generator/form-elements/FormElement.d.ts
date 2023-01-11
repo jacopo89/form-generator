@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { Option } from "./fields/SelectFormField";
 interface FormElementInterface {
     accessor: string;

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface FilterElementInterface {
     accessor: string;
     nestedForm?: (index: number) => JSX.Element;
