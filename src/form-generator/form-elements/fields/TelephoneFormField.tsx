@@ -1,8 +1,9 @@
 import {Form} from "react-bootstrap";
-import React, {useEffect} from "react";
+import React from "react";
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import {getNestedValue} from "../utils/form-generator-utils";
-import { PatternFormat } from 'react-number-format';
+import {PatternFormat} from 'react-number-format';
+import {FormGroup} from "../utils/FormGroup";
 
 
 export interface TelephoneFormFieldInterface extends BasicFormElementInterface{
@@ -16,9 +17,9 @@ export default function TelephoneFormField(props:TelephoneFormFieldInterface){
 
 
 
-    return <div className="filled form-group tooltip-end-top">
+    return <FormGroup>
         <Form.Label>{Header}</Form.Label>
         <PatternFormat name={accessor} value={getNestedValue(accessor,values)} onValueChange={(e)=>setFieldValue(e.value)}  format="+## ##########" mask="_" className="form-control" allowEmptyFormatting />
         {nestedTouched && <div className="d-block">{errorMessage}</div>}
-    </div>
+    </FormGroup>
 }
