@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import { Option } from "./SelectFormField";
 export interface RadioFormElementInterface extends BasicFormElementInterface {

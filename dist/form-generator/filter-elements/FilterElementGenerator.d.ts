@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { TextFilterElementInterface } from "./fields/TextFilterField";
 import { CheckboxFilterElementInterface } from "./fields/CheckboxFilterField";
 import { RadioFilterElementInterface } from "./fields/RadioFilterField";

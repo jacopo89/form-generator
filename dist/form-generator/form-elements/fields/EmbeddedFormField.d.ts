@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import { FormElements } from "../../ElementInterface";
 export interface EmbeddedElementInterface extends BasicFormElementInterface {

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { SelectFormElementInterface } from "./fields/SelectFormField";
 import { TextElementInterface } from "./fields/TextFormField";
 import { RadioFormElementInterface } from "./fields/RadioFormField";

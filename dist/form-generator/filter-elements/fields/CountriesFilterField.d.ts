@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 export interface Option {
     label: string;

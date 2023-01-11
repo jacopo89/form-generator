@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import BasicFilterElementInterface from "../BasicFilterElementInterface";
 export interface CheckboxFilterElementInterface extends BasicFilterElementInterface {
     type: "checkbox";

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 import 'react-dropzone-uploader/dist/styles.css';
 export interface FileFormElementInterface extends BasicFormElementInterface {

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 import { GenericElementInterface } from "../ElementInterface";
 declare type ConditionalProps = {
