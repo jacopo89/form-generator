@@ -4,7 +4,7 @@ import { GenericElementInterface } from "../ElementInterface";
 declare type ConditionalProps = {
     accessorRoot?: string;
     onSubmit?: never;
-    onChange: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>>;
+    onChange: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>> | void;
 } | {
     accessorRoot?: never;
     onSubmit?: (values: any) => void | Promise<any>;

@@ -7,7 +7,7 @@ import {isArrayElementAccessor} from "../form-elements/utils/form-generator-util
 type ConditionalProps = {
     accessorRoot?: string;
     onSubmit?: never;
-    onChange: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>>
+    onChange: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>> | void
 } | {
     accessorRoot?: never;
     onSubmit?: (values:any) => void | Promise<any>;
@@ -57,7 +57,6 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     },[existingValue,values])
 
     const updateWhenValuesChange = useCallback(()=>{
-
         if(accessorRoot && values!==initialValues){
             if(values!==existingValue){
                 onChange(values)
@@ -72,10 +71,6 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     useEffect(()=>{
         updateValues()
     },[existingValue])
-
-    //useEffect(()=>{console.log("values",values)},[values])
-
-
     /*const updateErrors = useCallback(()=>{
         if(existingErrors && existingErrors !== errors) {
             setErrors(existingErrors)
