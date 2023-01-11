@@ -1,4 +1,5 @@
-import { Option } from "./form-elements/fields/SelectFormField";
+import { Option as SelectOption } from "./form-elements/fields/SelectFormField";
+import { Option as RadioOption } from "./form-elements/fields/RadioFormField";
 export declare type ElementType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price";
 export default interface ElementInterface {
     Header: string;
@@ -13,7 +14,7 @@ export interface CheckboxElementInterface extends ElementInterface {
 }
 export interface RadioElementInterface extends ElementInterface {
     type: "radio";
-    options: Option[];
+    options: RadioOption[];
 }
 export interface TextElementInterface extends ElementInterface {
     type: "text";
@@ -23,7 +24,7 @@ export interface CountriesElementInterface extends ElementInterface {
 }
 export interface SelectElementInterface extends ElementInterface {
     type: "select";
-    options: Option[];
+    options: SelectOption[];
 }
 export interface WYSIWYGElementInterface extends ElementInterface {
     type: "wysiwyg";

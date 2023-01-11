@@ -7,9 +7,8 @@ import {getNestedValue} from "../utils/form-generator-utils";
 
 export interface Option{
     label:string,
-    value:string|undefined,
+    value:string|number|undefined,
 }
-
 
 export interface SelectFormElementInterface extends BasicFormElementInterface{
     type:"select",
@@ -32,17 +31,8 @@ export default function SelectFormField(element:SelectFormElementInterface){
         updateSelectValue()
     },[values])
 
-    /*useEffect(()=>{
-        if(value) setFieldValue(value.value)
-    },[value])*/
-
-
-
-
-
     // @ts-ignore
     const select =<Select isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value.value)} placeholder={Header} />
-
 
     return <>
         <Form.Label>{Header}</Form.Label>

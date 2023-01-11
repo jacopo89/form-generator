@@ -15,9 +15,6 @@ export default function SelectFormField(element) {
     useEffect(() => {
         updateSelectValue();
     }, [values]);
-    /*useEffect(()=>{
-        if(value) setFieldValue(value.value)
-    },[value])*/
     // @ts-ignore
     const select = _jsx(Select, { isDisabled: disable, classNamePrefix: "react-select", options: options, value: value, onChange: (value) => setFieldValue(value.value), placeholder: Header });
     return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }), select] });

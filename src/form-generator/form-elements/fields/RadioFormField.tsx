@@ -1,9 +1,13 @@
 import {Form} from "react-bootstrap";
 import React from "react";
 import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {Option} from "./SelectFormField";
 import {getNestedValue} from "../utils/form-generator-utils";
 import {FormGroup} from "../utils/FormGroup";
+
+export interface Option{
+    label:string,
+    value:string|undefined,
+}
 
 export interface RadioFormElementInterface extends BasicFormElementInterface{
     type:"radio",

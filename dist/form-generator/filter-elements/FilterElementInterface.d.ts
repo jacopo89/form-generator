@@ -1,4 +1,5 @@
-import { Option } from "../form-elements/fields/SelectFormField";
+import { Option as SelectOption } from "../form-elements/fields/SelectFormField";
+import { Option as RadioOption } from "../form-elements/fields/RadioFormField";
 import { FormikValues } from "formik";
 export declare type FilterType = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries";
 export declare type DateType = "after" | "before" | "between";
@@ -17,14 +18,14 @@ export interface CheckboxFilterInterface extends FilterInterface {
 }
 export interface RadioFilterInterface extends FilterInterface {
     type: "radio";
-    options: Option[];
+    options: RadioOption[];
 }
 export interface CountriesFilterInterface extends FilterInterface {
     type: "countries";
 }
 export interface SelectFilterInterface extends FilterInterface {
     type: "select";
-    options: Option[];
+    options: SelectOption[];
 }
 export interface TagsFilterInterface extends FilterInterface {
     type: "tags";

@@ -1,7 +1,7 @@
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 export interface Option {
     label: string;
-    value: string | undefined;
+    value: string | number | undefined;
 }
 export interface SelectFormElementInterface extends BasicFormElementInterface {
     type: "select";
