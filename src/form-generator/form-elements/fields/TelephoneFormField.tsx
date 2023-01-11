@@ -19,7 +19,7 @@ export default function TelephoneFormField(props:TelephoneFormFieldInterface){
 
     return <FormGroup>
         <Form.Label>{Header}</Form.Label>
-        <PatternFormat name={accessor} value={getNestedValue(accessor,values)} onValueChange={(e)=>setFieldValue(e.value)}  format="+## ##########" mask="_" className="form-control" allowEmptyFormatting />
+        <PatternFormat name={accessor} valueIsNumericString value={getNestedValue(accessor,values)} onValueChange={(e)=>setFieldValue(e.value)}  format="+## ##########" mask="_" className="form-control" allowEmptyFormatting />
         {nestedTouched && <div className="d-block">{errorMessage}</div>}
     </FormGroup>
 }

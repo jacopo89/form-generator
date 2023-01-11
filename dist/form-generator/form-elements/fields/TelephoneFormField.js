@@ -7,5 +7,5 @@ export default function TelephoneFormField(props) {
     const { type, values, errors, touched, setFieldValue, accessor, Header } = props;
     const errorMessage = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
-    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }), _jsx(PatternFormat, { name: accessor, value: getNestedValue(accessor, values), onValueChange: (e) => setFieldValue(e.value), format: "+## ##########", mask: "_", className: "form-control", allowEmptyFormatting: true }), nestedTouched && _jsx("div", Object.assign({ className: "d-block" }, { children: errorMessage }))] });
+    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }), _jsx(PatternFormat, { name: accessor, valueIsNumericString: true, value: getNestedValue(accessor, values), onValueChange: (e) => setFieldValue(e.value), format: "+## ##########", mask: "_", className: "form-control", allowEmptyFormatting: true }), nestedTouched && _jsx("div", Object.assign({ className: "d-block" }, { children: errorMessage }))] });
 }
