@@ -43,6 +43,7 @@ export interface CollectionElementInterface extends ElementInterface {
     type: "collection";
     formElements: FormElements;
     initialValues: object;
+    lockList?: boolean;
 }
 export interface EmbeddedElementInterface extends ElementInterface {
     type: "embedded";

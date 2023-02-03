@@ -2,3 +2,4 @@ export { default as FormElement } from "./form-generator/form-elements/FormEleme
 export { default as FormGeneratorContext } from "./form-generator/form-context/FormGeneratorContext";
 export { default as FormGeneratorContextProvider } from "./form-generator/form-context/FormGeneratorContextProvider";
 export type { FormElements } from "./form-generator/ElementInterface";
+export { getFormElementValue } from "./form-generator/form-elements/FormElement";
