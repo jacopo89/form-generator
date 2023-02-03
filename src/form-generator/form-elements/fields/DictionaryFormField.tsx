@@ -42,7 +42,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
 
 
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
-    const existingElements = getNestedValue(accessor,values)
+    const existingElements = useMemo(()=>getNestedValue(accessor,values),[accessor,values])
 
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
@@ -51,30 +51,34 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
     if(!Array.isArray(getNestedValue(accessor,values))) console.log("accessor", accessor)
     const existing = getNestedValue(accessor,values).length
 
-
-    // @ts-ignore
-    const nestedElements = getNestedValue(accessor,values).map((value) => {
-        return nestedBasicElements.map(nested => {
-            if(nested.accessor === "value"){
-                nested.type = value["type"] ?? "text";
+    const nestedElements = useMemo(()=>{
+        // @ts-ignore
+        const finalElements =  existingElements.map((value,index) => {
+            return nestedBasicElements.map(nested => {
+                if(nested.accessor === "value"){
+                    const newNested = {...nested};
+                    newNested.type = value["type"] ?? "text";
+                    return newNested;
+                }
                 return nested;
-            }
-            return nested;
+            })
         })
-    })
+
+        return finalElements
+    },[existingElements])
+
 
     const nestedForms = useMemo(()=>{
         return existingElements.map((element:any,index:number)=>{
             const indexAccessor = `${accessor}[${index}]`
-            return (<Row className={"mb-3"}>
+            return (<Row key={index} className={"mb-3"}>
                     <Col xs={1}>
-                        <Button className={"btn-sm p-1 rounded-circle bg-danger"}
-                                                            onClick={() => unsetFieldValue(indexAccessor)}>
+                        <Button className={"btn-sm p-1 rounded-circle bg-danger"} onClick={() => unsetFieldValue(indexAccessor)}>
                             <DeleteIcon/>
                         </Button>
                     </Col>
                     <Col xs={11}>
-                        <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
+                        <FormGeneratorContextProvider disable={disable} formValue={formValue} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
                             <Row>
                                 <Col xs={4}>
                                     <FormElement accessor={"key"}/>
@@ -85,7 +89,6 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
                                 <Col xs={4}>
                                     <FormElement accessor={"value"}/>
                                 </Col>
-
                             </Row>
                         </FormGeneratorContextProvider>
                         <Divider light/>
@@ -93,7 +96,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
 
                 </Row>
             )})
-    },[existingElements, accessor, initialValues])
+    },[existingElements, accessor, initialValues, nestedElements])
 
 
     if(collectionElement === undefined) return <div>{accessor}</div>
