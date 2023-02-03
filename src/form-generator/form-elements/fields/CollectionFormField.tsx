@@ -13,10 +13,11 @@ export interface CollectionElementInterface extends BasicFormElementInterface{
     formElements: FormElements,
     buttonLabel:string,
     nestedForm: (index:number)=>JSX.Element
-    initialValues:object
+    initialValues:object,
+    lockList?:boolean
 }
 
-export default function CollectionFormField({accessor, nestedForm, buttonLabel ="Aggiungi",initialValues}:CollectionElementInterface){
+export default function CollectionFormField({accessor, nestedForm, buttonLabel ="Aggiungi",initialValues, lockList=false}:CollectionElementInterface){
 
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
     /*const existingElements = useMemo(()=>{
@@ -40,7 +41,7 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
                 const indexAccessor = `${accessor}[${index}]`
                 return (<Row className={"mb-3"}>
                         <Col xs={1}>
-                            { !disable ? <Button className={"btn-sm p-1 rounded-circle bg-danger"}
+                            { (!disable || !lockList) ? <Button className={"btn-sm p-1 rounded-circle bg-danger"}
                                      onClick={() => unsetFieldValue(indexAccessor)}>
                                 <DeleteIcon/>
                             </Button> : <div>{index+1}</div>}
@@ -61,7 +62,7 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
     return <div>
         {nestedForms}
         {
-            !disable && <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}>
+            (!disable && !lockList) && <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}>
                 {buttonLabel}
             </Button>
         }

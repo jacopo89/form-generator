@@ -2,7 +2,7 @@ import FormElementGenerator from "./FormElementGenerator";
 import {useContext, useEffect} from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import {GenericElementInterface} from "../ElementInterface";
-import {getAccessorElementsNoIndex} from "./utils/form-generator-utils";
+import {getAccessorElementsNoIndex, getNestedValue} from "./utils/form-generator-utils";
 import {Option} from "./fields/SelectFormField";
 
 interface FormElementInterface {
@@ -41,4 +41,12 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
     }
     return <div>{accessor}</div>
 
+}
+
+export function getFormElementValue(accessor:string){
+    const {values,errors,touched,setFieldValue,elements,accessorRoot,disable} = useContext(FormGeneratorContext)
+    const accessorParsed = getAccessorElementsNoIndex(accessor)
+    const element = getElement(elements,accessorParsed);
+
+    return getNestedValue(accessor,values)
 }

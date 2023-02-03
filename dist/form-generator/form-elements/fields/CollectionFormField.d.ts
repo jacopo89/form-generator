@@ -7,5 +7,6 @@ export interface CollectionElementInterface extends BasicFormElementInterface {
     buttonLabel: string;
     nestedForm: (index: number) => JSX.Element;
     initialValues: object;
+    lockList?: boolean;
 }
-export default function CollectionFormField({ accessor, nestedForm, buttonLabel, initialValues }: CollectionElementInterface): JSX.Element;
+export default function CollectionFormField({ accessor, nestedForm, buttonLabel, initialValues, lockList }: CollectionElementInterface): JSX.Element;

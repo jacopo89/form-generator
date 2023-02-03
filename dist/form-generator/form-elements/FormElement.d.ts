@@ -6,4 +6,5 @@ interface FormElementInterface {
     options?: Option[];
 }
 export default function FormElement({ accessor, nestedForm, options }: FormElementInterface): JSX.Element;
+export declare function getFormElementValue(accessor: string): any;
 export {};
