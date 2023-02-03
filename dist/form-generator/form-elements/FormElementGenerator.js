@@ -15,6 +15,7 @@ import CountriesFormField from "./fields/CountriesFormField";
 import PasswordFormField from "./fields/PasswordFormField";
 import FloatFormField from "./fields/FloatFormField";
 import PriceFormField from "./fields/PriceFormField";
+import DictionaryFormField from "./fields/DictionaryFormField";
 export default function FormElementGenerator(props) {
     const { type } = props;
     switch (type) {
@@ -61,6 +62,9 @@ export default function FormElementGenerator(props) {
         }
         case "tel": {
             return _jsx(TelephoneFormField, Object.assign({}, props));
+        }
+        case "dictionary": {
+            return _jsx(DictionaryFormField, Object.assign({}, props));
         }
     }
     return _jsx(_Fragment, {});

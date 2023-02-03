@@ -1,6 +1,6 @@
 import {Option as SelectOption} from "./form-elements/fields/SelectFormField";
 import {Option as RadioOption} from "./form-elements/fields/RadioFormField";
-export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel"
+export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"
 export type FileType = "*" | "image/*" | "application/*" | "application/pdf"
 
 export default interface ElementInterface{
@@ -57,6 +57,11 @@ export interface CollectionElementInterface extends ElementInterface{
     lockList?:boolean
 }
 
+export interface DictionaryElementInterface extends ElementInterface{
+    type:"dictionary",
+    initialValues: object,
+}
+
 export interface EmbeddedElementInterface extends ElementInterface{
     type:"embedded",
     formElements:FormElements,
@@ -85,5 +90,5 @@ export interface TelephoneElementInterface extends ElementInterface{
 
 
 
-export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface
+export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface
 export type FormElements = GenericElementInterface[]

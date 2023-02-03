@@ -20,11 +20,6 @@ export interface CollectionElementInterface extends BasicFormElementInterface{
 export default function CollectionFormField({accessor, nestedForm, buttonLabel ="Aggiungi",initialValues, lockList=false}:CollectionElementInterface){
 
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
-    /*const existingElements = useMemo(()=>{
-        console.log("ricalcolo existing elements.")
-        return getNestedValue(accessor,values)
-    },[accessor, values])*/
-
     const existingElements = getNestedValue(accessor,values)
 
     // @ts-ignore
@@ -41,7 +36,7 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
                 const indexAccessor = `${accessor}[${index}]`
                 return (<Row className={"mb-3"}>
                         <Col xs={1}>
-                            { (!disable || !lockList) ? <Button className={"btn-sm p-1 rounded-circle bg-danger"}
+                            { (!disable && !lockList) ? <Button className={"btn-sm p-1 rounded-circle bg-danger"}
                                      onClick={() => unsetFieldValue(indexAccessor)}>
                                 <DeleteIcon/>
                             </Button> : <div>{index+1}</div>}

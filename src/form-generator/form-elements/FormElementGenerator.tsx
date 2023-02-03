@@ -15,8 +15,9 @@ import CountriesFormField, {CountriesFormElementInterface} from "./fields/Countr
 import PasswordFormField, {PasswordElementInterface} from "./fields/PasswordFormField";
 import FloatFormField, {FloatElementInterface} from "./fields/FloatFormField";
 import PriceFormField, {PriceElementInterface} from "./fields/PriceFormField";
+import DictionaryFormField, {DictionaryElementInterface} from "./fields/DictionaryFormField";
 
-export type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface |WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneFormFieldInterface
+export type GenericFormElementInterface = TextElementInterface | SelectFormElementInterface | RadioFormElementInterface | CheckboxFormElementInterface |WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileFormElementInterface | DateElementInterface | CountriesFormElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneFormFieldInterface | DictionaryElementInterface
 
 export default function FormElementGenerator(props: GenericFormElementInterface) {
     const {type} = props
@@ -64,6 +65,9 @@ export default function FormElementGenerator(props: GenericFormElementInterface)
         }
         case "tel":{
             return <TelephoneFormField {...props}/>
+        }
+        case "dictionary":{
+            return <DictionaryFormField {...props}/>
         }
     }
     return <></>
