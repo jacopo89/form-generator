@@ -51,14 +51,17 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
     if(!Array.isArray(getNestedValue(accessor,values))) console.log("accessor", accessor)
     const existing = getNestedValue(accessor,values).length
 
-    const nestedElements = nestedBasicElements.map(nested => {
-        if(nested.accessor === "value"){
-            nested.type = getNestedValue(accessor,values)["type"];
-            return nested;
-        }
-        return nested;
-    })
 
+    // @ts-ignore
+    const nestedElements = getNestedValue(accessor,values).map((value) => {
+        return nestedBasicElements.map(nested => {
+            if(nested.accessor === "value"){
+                nested.type = value["type"] ?? "text";
+                return nested;
+            }
+            return nested;
+        })
+    })
 
     const nestedForms = useMemo(()=>{
         return existingElements.map((element:any,index:number)=>{
@@ -71,7 +74,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
                         </Button>
                     </Col>
                     <Col xs={11}>
-                        <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
+                        <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
                             <Row>
                                 <Col xs={4}>
                                     <FormElement accessor={"key"}/>
