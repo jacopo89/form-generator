@@ -13,6 +13,9 @@ export interface FormContextInterface{
     submitForm:(e?: React.FormEvent<HTMLFormElement> | undefined) => Promise<any>
     accessorRoot?:string,
     disable:boolean,
+    isValid:boolean,
+    isValidating:boolean,
+    isSubmitting:boolean
 }
 
 const formContextDefaultValue:FormContextInterface = {
@@ -24,7 +27,10 @@ const formContextDefaultValue:FormContextInterface = {
     unsetFieldValue:(name:string)=>{},
     elements:[],
     submitForm: (e?: React.FormEvent<HTMLFormElement> | undefined) => new Promise<void>(()=>{}),
-    disable:false
+    disable:false,
+    isValid:false,
+    isValidating:false,
+    isSubmitting:false
 }
 
 

@@ -48,7 +48,7 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     }
 
     const formik = useFormik({ initialValues, validationSchema, onSubmit:onSubmitHandler });
-    const { handleSubmit, setValues, values, touched, errors, setFieldValue,setErrors, setTouched,submitForm } = formik;
+    const { handleSubmit, setValues, values, touched, errors, setFieldValue,setErrors, setTouched,submitForm, isValid,isValidating,isSubmitting } = formik;
 
     const updateValues = useCallback(()=>{
         if(existingValue && existingValue !== values) {
@@ -120,7 +120,7 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
 
     }
 
-    return <FormGeneratorContext.Provider value={{formValue:values, disable, values,errors, touched, setFieldValue, unsetFieldValue, elements, submitForm,accessorRoot}}>
+    return <FormGeneratorContext.Provider value={{formValue:values, disable, values,errors, touched, setFieldValue, unsetFieldValue, elements, submitForm,accessorRoot, isValid,isValidating,isSubmitting}}>
         {formContent}
     </FormGeneratorContext.Provider>
 }
