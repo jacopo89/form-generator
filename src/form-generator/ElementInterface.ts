@@ -1,5 +1,6 @@
-import {Option as SelectOption} from "./form-elements/fields/SelectFormField";
-import {Option as RadioOption} from "./form-elements/fields/RadioFormField";
+import {SelectOption} from "./form-elements/interfaces/SelectElementInterface";
+import {RadioOption} from "./form-elements/interfaces/RadioElementInterface";
+
 export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"
 export type FileType = "*" | "image/*" | "application/*" | "application/pdf"
 

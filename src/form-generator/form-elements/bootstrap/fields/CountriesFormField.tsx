@@ -1,18 +1,13 @@
 import React, {useEffect, useState} from "react";
 // @ts-ignore
 import Select from "react-select";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 import {Form} from "react-bootstrap";
-import {getNestedValue} from "../utils/form-generator-utils";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {CountriesElementInterface} from "../../interfaces/CountriesElementInterface";
 
 export interface Option{
     label:string,
     value:string,
-}
-
-
-export interface CountriesFormElementInterface extends BasicFormElementInterface{
-    type:"countries",
 }
 
 const countries = [
@@ -258,7 +253,7 @@ const countries = [
     {"label": "Zimbabwe", "value": "ZW"}
 ]
 
-export default function CountriesFormField(element:CountriesFormElementInterface){
+export default function CountriesFormField(element:CountriesElementInterface){
     const {type,values, disable, errors, touched,setFieldValue,accessor,Header} = element
 
     const [value, setValue] = useState<Option|undefined>(countries.find(option => option.value === getNestedValue(accessor,values) ));

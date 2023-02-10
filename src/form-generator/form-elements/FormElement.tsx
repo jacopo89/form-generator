@@ -1,4 +1,4 @@
-import FormElementGenerator from "./FormElementGenerator";
+import BootstrapFormElementGenerator from "./bootstrap/FormElementGenerator";
 import {useContext, useEffect} from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import {GenericElementInterface} from "../ElementInterface";
@@ -37,7 +37,7 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
     const finalAccessor = accessor
     if(element){
         // @ts-ignore
-        return <FormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
+        return <BootstrapFormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
     }
     return <div>{accessor}</div>
 

@@ -1,21 +1,14 @@
 import {Form} from "react-bootstrap";
 import React from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../utils/form-generator-utils";
+import {getNestedValue} from "../../utils/form-generator-utils";
 import {PatternFormat} from 'react-number-format';
-import {FormGroup} from "../utils/FormGroup";
+import {FormGroup} from "../../utils/FormGroup";
+import {TelephoneElementInterface} from "../../interfaces/TelephoneElementInterface";
 
-
-export interface TelephoneFormFieldInterface extends BasicFormElementInterface{
-    type:"tel"
-}
-
-export default function TelephoneFormField(props:TelephoneFormFieldInterface){
+export default function TelephoneFormField(props:TelephoneElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props
     const errorMessage = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
-
-
 
     return <FormGroup>
         <Form.Label>{Header}</Form.Label>

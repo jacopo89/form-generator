@@ -1,14 +1,10 @@
 import React from "react";
-import { Form } from "react-bootstrap";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../utils/form-generator-utils";
-import {FormGroup} from "../utils/FormGroup";
+import {Form} from "react-bootstrap";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {FormGroup} from "../../utils/FormGroup";
+import {CheckboxElementInterface} from "../../interfaces/CheckboxElementInterface";
 
-export interface CheckboxFormElementInterface extends BasicFormElementInterface{
-    type:"checkbox"
-}
-
-export default function CheckboxFormField(props:CheckboxFormElementInterface){
+export default function CheckboxFormField(props:CheckboxElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)

@@ -1,21 +1,11 @@
 import {Button, Col, Row} from "react-bootstrap";
 import React, {useContext, useMemo} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {FormElements} from "../../ElementInterface";
-import FormGeneratorContext from "../../form-context/FormGeneratorContext";
-import FormGeneratorContextProvider from "../../form-context/FormGeneratorContextProvider";
-import {getNestedValue} from "../utils/form-generator-utils";
+import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
+import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
+import {getNestedValue} from "../../utils/form-generator-utils";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {Divider} from "@mui/material";
-
-export interface CollectionElementInterface extends BasicFormElementInterface{
-    type:"collection",
-    formElements: FormElements,
-    buttonLabel:string,
-    nestedForm: (index:number)=>JSX.Element
-    initialValues:object,
-    lockList?:boolean
-}
+import {CollectionElementInterface} from "../../interfaces/CollectionElementInterface";
 
 export default function CollectionFormField({accessor, nestedForm, buttonLabel ="Aggiungi",initialValues, lockList=false}:CollectionElementInterface){
 

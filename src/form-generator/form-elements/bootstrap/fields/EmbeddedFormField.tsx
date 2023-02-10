@@ -1,20 +1,10 @@
-import {Button, Col, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import React, {useContext, useMemo} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {FormElements} from "../../ElementInterface";
-import FormGeneratorContext from "../../form-context/FormGeneratorContext";
-import {getNestedValue} from "../utils/form-generator-utils";
-import FormGeneratorContextProvider from "../../form-context/FormGeneratorContextProvider";
-import DeleteIcon from "@mui/icons-material/Delete";
+import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import {Divider} from "@mui/material";
-
-export interface EmbeddedElementInterface extends BasicFormElementInterface{
-    type:"embedded",
-    formElements: FormElements,
-    nestedForm:(index:number)=> JSX.Element,
-    initialValues: any,
-    validationSchema:any,
-}
+import {EmbeddedElementInterface} from "../../interfaces/EmbeddedElementInterface";
 
 export default function EmbeddedFormField({accessor,nestedForm,initialValues}:EmbeddedElementInterface){
 

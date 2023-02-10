@@ -1,12 +1,9 @@
 import React, {useCallback, useEffect, useMemo, useState} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-import {getNestedValue} from "../utils/form-generator-utils";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {WYSIWYGElementInterface} from "../../interfaces/WYSIWYGElementInterface";
 
-export interface WYSIWYGElementInterface extends BasicFormElementInterface{
-    type:"wysiwyg"
-}
 const modules = {
     history: {
         delay: 2000,

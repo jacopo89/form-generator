@@ -1,15 +1,7 @@
 import React, {useEffect, useState} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 // @ts-ignore
 import ReactTags from "react-tag-autocomplete";
-
-interface Tag{
-    name:string
-}
-
-export interface TagsElementInterface extends BasicFormElementInterface{
-    type:"tags"
-}
+import {Tag, TagsElementInterface} from "../../interfaces/TagElementInterface";
 
 export default function TagsFormField(props:TagsElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props

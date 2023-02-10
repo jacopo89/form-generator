@@ -1,12 +1,8 @@
 import {Form} from "react-bootstrap";
-import React, {useEffect} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../utils/form-generator-utils";
-import {FormGroup} from "../utils/FormGroup";
-
-export interface PasswordElementInterface extends BasicFormElementInterface{
-    type:"password"
-}
+import React from "react";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {FormGroup} from "../../utils/FormGroup";
+import {PasswordElementInterface} from "../../interfaces/PasswordElementInterface";
 
 export default function PasswordFormField(props:PasswordElementInterface){
     const {type,disable, values, errors, touched,setFieldValue,accessor,Header} = props

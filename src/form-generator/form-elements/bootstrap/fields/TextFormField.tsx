@@ -1,11 +1,7 @@
 import {Form} from "react-bootstrap";
-import React, {useEffect} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../utils/form-generator-utils";
-
-export interface TextElementInterface extends BasicFormElementInterface{
-    type:"text"
-}
+import React from "react";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {TextElementInterface} from "../../interfaces/TextElementInterface";
 
 export default function TextFormField(props:TextElementInterface){
     const {type,disable, values, errors, touched,setFieldValue,accessor,Header} = props

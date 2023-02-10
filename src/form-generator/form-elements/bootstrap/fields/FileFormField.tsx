@@ -1,19 +1,13 @@
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import React, {useEffect} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 import Dropzone from "react-dropzone-uploader";
-import DropzonePreview from "../utils/DropzonePreview";
-import {readFile, readFiles} from "../utils/FileUploadedHelper";
+import DropzonePreview from "../../utils/DropzonePreview";
+import {readFile} from "../../utils/FileUploadedHelper";
 import 'react-dropzone-uploader/dist/styles.css'
-import {getNestedValue} from "../utils/form-generator-utils";
-import {FileType} from "../../ElementInterface";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {FileElementInterface} from "../../interfaces/FileElementInterface";
 
-export interface FileFormElementInterface extends BasicFormElementInterface{
-    type:"file",
-    accept: FileType
-}
-
-export default function FileFormField(props:FileFormElementInterface){
+export default function FileFormField(props:FileElementInterface){
     const {type,values,disable, errors, touched,setFieldValue,accessor,Header, accept} = props
 
     const existingFile = getNestedValue(accessor,values)

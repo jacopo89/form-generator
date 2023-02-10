@@ -1,20 +1,13 @@
 import {Button, Col, Row} from "react-bootstrap";
 import React, {useContext, useMemo} from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {FormElements} from "../../ElementInterface";
-import FormGeneratorContext from "../../form-context/FormGeneratorContext";
-import {getNestedValue} from "../utils/form-generator-utils";
-import FormGeneratorContextProvider from "../../form-context/FormGeneratorContextProvider";
+import {FormElements} from "../../../ElementInterface";
+import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {Divider} from "@mui/material";
-import FormElement from "../FormElement";
-
-export interface DictionaryElementInterface extends BasicFormElementInterface{
-    type:"dictionary",
-    nestedForm:(index:number)=> JSX.Element,
-    initialValues: any,
-    validationSchema:any,
-}
+import FormElement from "../../FormElement";
+import { DictionaryElementInterface } from "../../interfaces/DictionaryElementInterface";
 
 const nestedBasicElements:FormElements = [
     {

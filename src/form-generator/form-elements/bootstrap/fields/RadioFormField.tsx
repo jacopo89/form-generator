@@ -1,20 +1,11 @@
 import {Form} from "react-bootstrap";
 import React from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../utils/form-generator-utils";
-import {FormGroup} from "../utils/FormGroup";
+import {getNestedValue} from "../../utils/form-generator-utils";
+import {FormGroup} from "../../utils/FormGroup";
+import {RadioElementInterface} from "../../interfaces/RadioElementInterface";
 
-export interface Option{
-    label:string,
-    value:string|undefined,
-}
 
-export interface RadioFormElementInterface extends BasicFormElementInterface{
-    type:"radio",
-    options:Option[]
-}
-
-export default function RadioFormField(props:RadioFormElementInterface){
+export default function RadioFormField(props:RadioElementInterface){
     const {type,values, disable, errors, touched,setFieldValue,accessor,Header, options} = props
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
