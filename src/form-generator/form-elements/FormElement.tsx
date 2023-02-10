@@ -2,9 +2,9 @@ import {useContext} from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import {GenericElementInterface} from "../ElementInterface";
 import {getAccessorElementsNoIndex, getNestedValue} from "./utils/form-generator-utils";
-import BootstrapFormElementGenerator from "./bootstrap/BootstrapFormElementGenerator";
 import {SelectOption} from "./interfaces/SelectElementInterface";
 import {RadioOption} from "./interfaces/RadioElementInterface";
+import FormElementGenerator from "./FormElementGenerator";
 
 
 interface FormElementInterface {
@@ -40,7 +40,7 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
     if(element){
 
         // @ts-ignore
-        return <BootstrapFormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
+        return <FormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
     }
     return <div>{accessor}</div>
 

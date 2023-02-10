@@ -16,7 +16,7 @@ export type GenericFilterElementInterface =
 
 export default function FilterElementGenerator(props: GenericFilterElementInterface) {
     const theme = useFormGeneratorThemeContext();
-    switch(theme){
+    switch(theme.theme){
         case "material-ui":{
             return <div></div>
         }

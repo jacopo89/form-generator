@@ -1,8 +1,16 @@
-import React from "react";
+import React, {SetStateAction} from "react";
 
-type FormGeneratorTheme = "material-ui" | "bootstrap"
+export type FormGeneratorTheme = "material-ui" | "bootstrap"
 
-const formGeneratorThemeValue: FormGeneratorTheme = "material-ui"
-const FormGeneratorThemeContext = React.createContext<FormGeneratorTheme>(formGeneratorThemeValue)
+type FormGeneratorContextType = {
+    theme:FormGeneratorTheme,
+    setTheme: React.Dispatch<SetStateAction<FormGeneratorTheme>>
+}
+
+const formGeneratorThemeValue: FormGeneratorContextType = {
+    theme:"material-ui",
+    setTheme: () => {}
+}
+const FormGeneratorThemeContext = React.createContext<FormGeneratorContextType>(formGeneratorThemeValue)
 
 export default FormGeneratorThemeContext

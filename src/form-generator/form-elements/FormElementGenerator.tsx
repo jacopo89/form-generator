@@ -19,6 +19,7 @@ import SelectElementInterface from "./interfaces/SelectElementInterface";
 import {TagsElementInterface} from "./interfaces/TagElementInterface";
 import {TelephoneElementInterface} from "./interfaces/TelephoneElementInterface";
 import {WYSIWYGElementInterface} from "./interfaces/WYSIWYGElementInterface";
+import MaterialFormElementGenerator from "./materialui/MaterialFormElementGenerator";
 
 export type GenericFormElementInterface =
     TextElementInterface |
@@ -41,9 +42,9 @@ export type GenericFormElementInterface =
 
 export default function FormElementGenerator(props:GenericFormElementInterface) {
     const theme = useFormGeneratorThemeContext();
-    switch(theme){
+    switch(theme.theme){
         case "material-ui":{
-            return <div></div>
+            return <MaterialFormElementGenerator {...props}/>
         }
         case "bootstrap":{
             return <BootstrapFormElementGenerator {...props}/>

@@ -20,11 +20,8 @@ export default function SelectFormField(element:SelectElementInterface){
         updateSelectValue()
     },[values])
 
-    // @ts-ignore
-    const select =<Select isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value.value)} placeholder={Header} />
-
     return <>
         <Form.Label>{Header}</Form.Label>
-        {select}
+        <Select isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value?.value)} placeholder={Header} />
     </>
 }

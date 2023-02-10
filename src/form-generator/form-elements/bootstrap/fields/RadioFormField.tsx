@@ -16,7 +16,17 @@ export default function RadioFormField(props:RadioElementInterface){
     return <FormGroup>
         <Form.Label>{Header}</Form.Label>
         <div>
-            {options.map(option =><Form.Check disabled={disable} name={accessor} type="radio" value={option.value} label={option.label} id={option.value} inline onChange={onChangeRadio} checked={getNestedValue(accessor,values)=== option.value} />)}
+            {options.map(option =><Form.Check
+                key={option.value}
+                isInvalid={nestedTouched && nestedError !== undefined}
+                disabled={disable} name={accessor}
+                type="radio"
+                value={option.value}
+                label={option.label}
+                id={option.value}
+                inline
+                onChange={onChangeRadio}
+                checked={getNestedValue(accessor, values) === option.value} />)}
         </div>
 
     </FormGroup>
