@@ -1,14 +1,16 @@
-import FormElementGenerator from "./FormElementGenerator";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import {GenericElementInterface} from "../ElementInterface";
 import {getAccessorElementsNoIndex, getNestedValue} from "./utils/form-generator-utils";
-import {Option} from "./fields/SelectFormField";
+import {SelectOption} from "./interfaces/SelectElementInterface";
+import {RadioOption} from "./interfaces/RadioElementInterface";
+import FormElementGenerator from "./FormElementGenerator";
+
 
 interface FormElementInterface {
     accessor:string,
     nestedForm?:(index:number)=>JSX.Element,
-    options?:Option[],
+    options?:SelectOption[] | RadioOption[],
 }
 
 function getElement(elements: GenericElementInterface[], accessorParsed: string[]) {
@@ -36,6 +38,7 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
     const finalOptions = options || element?.options
     const finalAccessor = accessor
     if(element){
+
         // @ts-ignore
         return <FormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
     }
@@ -43,7 +46,7 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
 
 }
 
-export function getFormElementValue(accessor:string){
+export function useFormElementValue(accessor:string){
     const {values,errors,touched,setFieldValue,elements,accessorRoot,disable} = useContext(FormGeneratorContext)
     const accessorParsed = getAccessorElementsNoIndex(accessor)
     const element = getElement(elements,accessorParsed);

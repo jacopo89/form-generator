@@ -1,10 +1,9 @@
 import {useContext} from "react";
-import FormGeneratorContext from "../form-context/FormGeneratorContext";
 
 import {GenericFilterInterface} from "./FilterElementInterface";
 import {getAccessorElementsNoIndex} from "../form-elements/utils/form-generator-utils";
-import FilterElementGenerator from "./FilterElementGenerator";
 import FilterGeneratorContext from "../filter-context/FilterGeneratorContext";
+import BootstrapFilterElementGenerator from "./bootstrap/BootstrapFilterElementGenerator";
 
 interface FilterElementInterface {
     accessor:string,
@@ -34,7 +33,7 @@ export default function FilterElement({accessor,nestedForm}:FilterElementInterfa
     const finalAccessor = accessor
     if(element){
         // @ts-ignore
-        return <FilterElementGenerator nestedForm={nestedForm} {...element} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor}/>
+        return <BootstrapFilterElementGenerator nestedForm={nestedForm} {...element} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor}/>
     }
     return <div>{accessor}</div>
 
