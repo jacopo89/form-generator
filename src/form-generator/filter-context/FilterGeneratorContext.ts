@@ -1,5 +1,4 @@
 import {FormikErrors, FormikTouched, FormikValues} from "formik";
-import {FormElements, GenericElementInterface} from "../ElementInterface";
 import React from "react";
 import {GenericFilterInterface} from "../filter-elements/FilterElementInterface";
 

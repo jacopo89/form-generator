@@ -1,17 +1,7 @@
 import {Form} from "react-bootstrap";
 import React from "react";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
-import {getNestedValue} from "../../form-elements/utils/form-generator-utils";
-
-export interface Option{
-    label:string,
-    value:string|undefined,
-}
-
-export interface RadioFilterElementInterface extends BasicFormElementInterface{
-    type:"radio",
-    options:Option[]
-}
+import {getNestedValue} from "../../../form-elements/utils/form-generator-utils";
+import {RadioFilterElementInterface} from "../../interfaces/RadioFilterElementInterface";
 
 export default function RadioFilterField(props:RadioFilterElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header, options} = props

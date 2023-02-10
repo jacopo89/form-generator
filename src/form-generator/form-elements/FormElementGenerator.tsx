@@ -46,8 +46,7 @@ export default function FormElementGenerator(props:GenericFormElementInterface) 
             return <div></div>
         }
         case "bootstrap":{
-            return <BootstrapFormElementGenerator {...props}></BootstrapFormElementGenerator>
+            return <BootstrapFormElementGenerator {...props}/>
         }
     }
-
 }

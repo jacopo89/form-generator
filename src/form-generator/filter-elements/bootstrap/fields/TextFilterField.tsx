@@ -1,11 +1,8 @@
 import {Form} from "react-bootstrap";
 import React from "react";
-import BasicFilterElementInterface from "../BasicFilterElementInterface";
-import {getNestedValue} from "../../form-elements/utils/form-generator-utils";
+import {getNestedValue} from "../../../form-elements/utils/form-generator-utils";
+import {TextFilterElementInterface} from "../../interfaces/TextFilterElementInterface";
 
-export interface TextFilterElementInterface extends BasicFilterElementInterface{
-    type:"text"
-}
 
 export default function TextFilterField(props:TextFilterElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props

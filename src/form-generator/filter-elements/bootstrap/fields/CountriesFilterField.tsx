@@ -1,19 +1,10 @@
 import React, {useEffect, useState} from "react";
 // @ts-ignore
 import Select from "react-select";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 import {Form} from "react-bootstrap";
-import {getNestedValue} from "../../form-elements/utils/form-generator-utils";
+import {getNestedValue} from "../../../form-elements/utils/form-generator-utils";
+import {CountriesFilterElementInterface, CountriesFilterOption} from "../../interfaces/CountriesFilterElementInterface";
 
-export interface Option{
-    label:string,
-    value:string,
-}
-
-
-export interface CountriesFilterElementInterface extends BasicFormElementInterface{
-    type:"countries",
-}
 
 const countries = [
     {"label": "Afghanistan", "value": "AF"},
@@ -261,7 +252,7 @@ const countries = [
 export default function CountriesFilterField(element:CountriesFilterElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = element
 
-    const [value, setValue] = useState<Option|undefined>(countries.find(option => option.value === getNestedValue(accessor,values) ));
+    const [value, setValue] = useState<CountriesFilterOption|undefined>(countries.find(option => option.value === getNestedValue(accessor,values) ));
 
     useEffect(()=>{
         if(value) setFieldValue(value.value)

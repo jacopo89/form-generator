@@ -1,6 +1,6 @@
-import {Option as SelectOption} from "../form-elements/fields/SelectFormField";
-import {Option as RadioOption} from "../form-elements/fields/RadioFormField";
 import {FormikValues} from "formik";
+import {RadioOption} from "./interfaces/RadioFilterElementInterface";
+import {SelectFilterOption} from "./interfaces/SelectFilterElementInterface";
 
 export type FilterType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries"
 export type DateType = "after" | "before" | "between"
@@ -32,7 +32,7 @@ export interface CountriesFilterInterface extends FilterInterface{
 
 export interface SelectFilterInterface extends FilterInterface{
     type:"select",
-    options:SelectOption[]
+    options:SelectFilterOption[]
 }
 
 export interface TagsFilterInterface extends FilterInterface{

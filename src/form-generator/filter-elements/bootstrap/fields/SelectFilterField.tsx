@@ -1,26 +1,14 @@
 import React, {useCallback, useEffect, useState} from "react";
 // @ts-ignore
 import Select from "react-select";
-import BasicFormElementInterface from "../../BasicFormElementInterface";
 import {Form} from "react-bootstrap";
-import {getNestedValue} from "../../form-elements/utils/form-generator-utils";
-
-export interface Option{
-    label:string,
-    value:string|undefined,
-}
-
-
-export interface SelectFilterElementInterface extends BasicFormElementInterface{
-    type:"select",
-    options:Option[],
-
-}
+import {getNestedValue} from "../../../form-elements/utils/form-generator-utils";
+import SelectFilterElementInterface, {SelectFilterOption} from "../../interfaces/SelectFilterElementInterface";
 
 export default function SelectFilterField(element:SelectFilterElementInterface){
     const {type,values, errors,options, touched,setFieldValue,accessor,Header} = element
 
-    const [value, setValue] = useState<Option|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
+    const [value, setValue] = useState<SelectFilterOption|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
 
     const updateSelectValue =  useCallback(()=>{
         if(options.find(option => option.value === getNestedValue(accessor,values) )!== value){

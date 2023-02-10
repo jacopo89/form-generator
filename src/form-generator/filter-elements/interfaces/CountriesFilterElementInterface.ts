@@ -1,10 +1,10 @@
 import BasicFormElementInterface from "../../BasicFormElementInterface";
 
-export interface CountriesOption{
+export interface CountriesFilterOption{
     label:string,
     value:string,
 }
 
-export interface CountriesElementInterface extends BasicFormElementInterface{
+export interface CountriesFilterElementInterface extends BasicFormElementInterface{
     type:"countries",
 }
