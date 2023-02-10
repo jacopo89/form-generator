@@ -1,9 +1,10 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import {FormElements} from "../form-generator/ElementInterface";
 import FormGeneratorContext from '../form-generator/form-context/FormGeneratorContext';
 import FormGeneratorContextProvider from "../form-generator/form-context/FormGeneratorContextProvider";
 import FormElement from "../form-generator/form-elements/FormElement";
 import {Col, Row} from "react-bootstrap";
+import FormGeneratorThemeContext from "../form-generator-theme/FormGeneratorThemeContext";
 
 const companyFormElements:FormElements = [
     {
@@ -52,23 +53,26 @@ const initialValues = {
 
 export default function App(){
     return <div>
-        <FormGeneratorContextProvider elements={companyFormElements} initialValues={initialValues} onSubmit={(values)=>{console.log("values",values)}}>
-            <FormGeneratorContext.Consumer>
-                {({values})=>{
-                    return <div >
-                        <div>
-                            <h3>Portals</h3>
+        <FormGeneratorThemeContext.Provider value="bootstrap">
+            <FormGeneratorContextProvider elements={companyFormElements} initialValues={initialValues} onSubmit={(values)=>{console.log("values",values)}}>
+                <FormGeneratorContext.Consumer>
+                    {({values})=>{
+                        return <div >
                             <div>
-                                <FormElement accessor={"portalSubscriptions"} nestedForm={PortalSubscriptionForm}/>
+                                <h3>Portals</h3>
+                                <div>
+                                    <FormElement accessor={"portalSubscriptions"} nestedForm={PortalSubscriptionForm}/>
+                                </div>
+                            </div>
+                            <div>
+                                <button type={"submit"}>Salva</button>
                             </div>
                         </div>
-                        <div>
-                            <button type={"submit"}>Salva</button>
-                        </div>
-                    </div>
-                }}
-            </FormGeneratorContext.Consumer>
-        </FormGeneratorContextProvider>
+                    }}
+                </FormGeneratorContext.Consumer>
+            </FormGeneratorContextProvider>
+        </FormGeneratorThemeContext.Provider>
+
     </div>
 }
 
