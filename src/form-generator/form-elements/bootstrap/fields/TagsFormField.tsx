@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 // @ts-ignore
 import ReactTags from "react-tag-autocomplete";
 import {Tag, TagsElementInterface} from "../../interfaces/TagElementInterface";
-import {Button} from "react-bootstrap";
-import "../tagsStyle.css"
+//import "../tagsStyle.css"
 
 export default function TagsFormField(props:TagsElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props
@@ -35,6 +34,5 @@ export default function TagsFormField(props:TagsElementInterface){
 
     return <div className="filled form-group tooltip-end-top d-flex">
         <ReactTags minQueryLength={0} tags={tags} allowNew onDelete={onTagDelete} onAddition={onTagAddition} placeholderText={Header} />
-        {/*<p>{touched[accessor] && errors[accessor]}</p>*/}
     </div>
 }

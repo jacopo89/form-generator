@@ -2,7 +2,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
 // @ts-ignore
 import ReactTags from "react-tag-autocomplete";
-import "../tagsStyle.css";
+//import "../tagsStyle.css"
 export default function TagsFormField(props) {
     const { type, values, errors, touched, setFieldValue, accessor, Header } = props;
     const [tags, setTags] = useState([]);
