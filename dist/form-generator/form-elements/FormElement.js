@@ -1,8 +1,8 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import FormElementGenerator from "./FormElementGenerator";
 import { useContext } from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import { getAccessorElementsNoIndex, getNestedValue } from "./utils/form-generator-utils";
+import FormElementGenerator from "./FormElementGenerator";
 function getElement(elements, accessorParsed) {
     let element = null;
     let haystack = elements;
@@ -31,7 +31,7 @@ export default function FormElement({ accessor, nestedForm, options }) {
     }
     return _jsx("div", { children: accessor });
 }
-export function getFormElementValue(accessor) {
+export function useFormElementValue(accessor) {
     const { values, errors, touched, setFieldValue, elements, accessorRoot, disable } = useContext(FormGeneratorContext);
     const accessorParsed = getAccessorElementsNoIndex(accessor);
     const element = getElement(elements, accessorParsed);

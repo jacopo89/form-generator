@@ -1,8 +1,8 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useContext } from "react";
 import { getAccessorElementsNoIndex } from "../form-elements/utils/form-generator-utils";
-import FilterElementGenerator from "./FilterElementGenerator";
 import FilterGeneratorContext from "../filter-context/FilterGeneratorContext";
+import BootstrapFilterElementGenerator from "./bootstrap/BootstrapFilterElementGenerator";
 function getElement(elements, accessorParsed) {
     let element = null;
     let haystack = elements;
@@ -25,7 +25,7 @@ export default function FilterElement({ accessor, nestedForm }) {
     const finalAccessor = accessor;
     if (element) {
         // @ts-ignore
-        return _jsx(FilterElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }));
+        return _jsx(BootstrapFilterElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }));
     }
     return _jsx("div", { children: accessor });
 }

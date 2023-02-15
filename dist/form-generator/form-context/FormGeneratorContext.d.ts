@@ -12,6 +12,9 @@ export interface FormContextInterface {
     submitForm: (e?: React.FormEvent<HTMLFormElement> | undefined) => Promise<any>;
     accessorRoot?: string;
     disable: boolean;
+    isValid: boolean;
+    isValidating: boolean;
+    isSubmitting: boolean;
 }
 declare const FormGeneratorContext: React.Context<FormContextInterface>;
 export default FormGeneratorContext;

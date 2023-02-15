@@ -1,8 +1,8 @@
 /// <reference types="react" />
-import { TextFilterElementInterface } from "./fields/TextFilterField";
-import { CheckboxFilterElementInterface } from "./fields/CheckboxFilterField";
-import { RadioFilterElementInterface } from "./fields/RadioFilterField";
-import { SelectFilterElementInterface } from "./fields/SelectFilterField";
-import { CountriesFilterElementInterface } from "./fields/CountriesFilterField";
-export declare type GenericFormElementInterface = TextFilterElementInterface | CheckboxFilterElementInterface | RadioFilterElementInterface | SelectFilterElementInterface | CountriesFilterElementInterface;
-export default function FilterElementGenerator(props: GenericFormElementInterface): JSX.Element;
+import { CheckboxFilterElementInterface } from "./interfaces/CheckboxFilterElementInterface";
+import { CountriesFilterElementInterface } from "./interfaces/CountriesFilterElementInterface";
+import { RadioFilterElementInterface } from "./interfaces/RadioFilterElementInterface";
+import SelectFilterElementInterface from "./interfaces/SelectFilterElementInterface";
+import { TextFilterElementInterface } from "./interfaces/TextFilterElementInterface";
+export declare type GenericFilterElementInterface = TextFilterElementInterface | CheckboxFilterElementInterface | RadioFilterElementInterface | SelectFilterElementInterface | CountriesFilterElementInterface;
+export default function FilterElementGenerator(props: GenericFilterElementInterface): JSX.Element;

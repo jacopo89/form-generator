@@ -1,10 +1,11 @@
 /// <reference types="react" />
-import { Option } from "./fields/SelectFormField";
+import { SelectOption } from "./interfaces/SelectElementInterface";
+import { RadioOption } from "./interfaces/RadioElementInterface";
 interface FormElementInterface {
     accessor: string;
     nestedForm?: (index: number) => JSX.Element;
-    options?: Option[];
+    options?: SelectOption[] | RadioOption[];
 }
 export default function FormElement({ accessor, nestedForm, options }: FormElementInterface): JSX.Element;
-export declare function getFormElementValue(accessor: string): any;
+export declare function useFormElementValue(accessor: string): any;
 export {};

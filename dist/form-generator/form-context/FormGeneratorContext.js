@@ -8,7 +8,10 @@ const formContextDefaultValue = {
     unsetFieldValue: (name) => { },
     elements: [],
     submitForm: (e) => new Promise(() => { }),
-    disable: false
+    disable: false,
+    isValid: false,
+    isValidating: false,
+    isSubmitting: false
 };
 const FormGeneratorContext = React.createContext(formContextDefaultValue);
 export default FormGeneratorContext;
