@@ -8,6 +8,8 @@ import SwitchFormField from "./fields/SwitchFormField";
 import CollectionFormField from "./fields/CollectionFormField";
 import EmbeddedFormField from "./fields/EmbeddedFormField";
 import DictionaryFormField from "./fields/DictionaryFormField";
+import WYSIWYGFormField from "./fields/WYSIWYGFormField";
+import PriceFormField from "../bootstrap/fields/PriceFormField";
 export default function MaterialFormElementGenerator(props) {
     const { type } = props;
     switch (type) {
@@ -29,6 +31,10 @@ export default function MaterialFormElementGenerator(props) {
             return _jsx(EmbeddedFormField, Object.assign({}, props));
         case "dictionary":
             return _jsx(DictionaryFormField, Object.assign({}, props));
+        case "wysiwyg":
+            return _jsx(WYSIWYGFormField, Object.assign({}, props));
+        case "price":
+            return _jsx(PriceFormField, Object.assign({}, props));
     }
     return _jsx(_Fragment, {});
 }

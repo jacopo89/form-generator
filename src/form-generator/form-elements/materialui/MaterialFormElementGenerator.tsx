@@ -10,6 +10,8 @@ import SwitchFormField from "./fields/SwitchFormField";
 import CollectionFormField from "./fields/CollectionFormField";
 import EmbeddedFormField from "./fields/EmbeddedFormField";
 import DictionaryFormField from "./fields/DictionaryFormField";
+import WYSIWYGFormField from "./fields/WYSIWYGFormField";
+import PriceFormField from "../bootstrap/fields/PriceFormField";
 
 
 export default function MaterialFormElementGenerator(props: GenericFormElementInterface) {
@@ -33,6 +35,10 @@ export default function MaterialFormElementGenerator(props: GenericFormElementIn
             return <EmbeddedFormField {...props} />
         case "dictionary":
             return <DictionaryFormField {...props} />
+        case "wysiwyg":
+            return <WYSIWYGFormField {...props}/>
+        case "price":
+            return <PriceFormField {...props} />
     }
     return <></>
 }
