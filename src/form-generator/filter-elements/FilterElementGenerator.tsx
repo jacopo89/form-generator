@@ -6,6 +6,7 @@ import SelectFilterElementInterface from "./interfaces/SelectFilterElementInterf
 import {TextFilterElementInterface} from "./interfaces/TextFilterElementInterface";
 import useFormGeneratorThemeContext from "../../form-generator-theme/useFormGeneratorThemeContext";
 import BootstrapFilterElementGenerator from "./bootstrap/BootstrapFilterElementGenerator";
+import MaterialFilterElementGenerator from "./materialui/MaterialFilterElementGenerator";
 
 export type GenericFilterElementInterface =
     TextFilterElementInterface |
@@ -18,7 +19,7 @@ export default function FilterElementGenerator(props: GenericFilterElementInterf
     const theme = useFormGeneratorThemeContext();
     switch(theme.theme){
         case "material-ui":{
-            return <div></div>
+            return <MaterialFilterElementGenerator {...props}/>
         }
         case "bootstrap":{
             return <BootstrapFilterElementGenerator {...props}/>

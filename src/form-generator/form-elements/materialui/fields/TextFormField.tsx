@@ -9,18 +9,20 @@ export default function TextFormField(props:TextElementInterface){
     const nestedTouched = getNestedValue(accessor,touched)
     const value = getNestedValue(accessor,values)
 
-    return <TextField
+    return <>
+        <span>{Header}</span>
+        <TextField
         disabled={disable}
         error={nestedTouched && nestedError!==undefined}
         fullWidth
         label={Header}
         name={accessor}
         onChange={(e)=>setFieldValue(e.target.value)}
-        placeholder={Header}
         type="text"
         value={value}
         variant={"outlined"}
         helperText={nestedError}
-    />
+        />
+    </>
 }
 

@@ -4,11 +4,12 @@ import {TextField} from "@mui/material";
 import React from "react";
 
 export default function NumberFormField(props:NumberElementInterface){
-    const {type,disable, values, errors, touched,setFieldValue,accessor,Header} = props
+    const {type,values, errors, touched,setFieldValue,accessor,Header,disable} = props
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
     const value = getNestedValue(accessor,values)
 
+    const onChange = (e:any) => setFieldValue((parseFloat(e.target.value))*100)
     return <>
         <span>{Header}</span>
         <TextField
@@ -17,9 +18,9 @@ export default function NumberFormField(props:NumberElementInterface){
             fullWidth
             label={Header}
             name={accessor}
-            onChange={(e)=>setFieldValue(e.target.value)}
-            type="number"
-            value={value}
+            onChange={onChange}
+            type="float"
+            value={value/100}
             variant={"outlined"}
             helperText={nestedError}
         />

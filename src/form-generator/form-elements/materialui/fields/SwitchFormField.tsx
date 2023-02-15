@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import {Checkbox, FormControlLabel, FormGroup, Switch} from "@mui/material";
-import {CheckboxElementInterface} from "../../interfaces/CheckboxElementInterface";
+import React from "react";
+import {FormControlLabel, FormGroup, Switch} from "@mui/material";
 import {getNestedValue} from "../../utils/form-generator-utils";
 import {SwitchElementInterface} from "../../interfaces/SwitchElementInterface";
 
