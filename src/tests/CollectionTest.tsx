@@ -10,11 +10,6 @@ import useFormGeneratorThemeContext from "../form-generator-theme/useFormGenerat
 import * as Yup from 'yup'
 const companyFormElements:FormElements = [
     {
-        accessor:"companyName",
-        type:"text",
-        Header:"Company name"
-    },
-    {
         accessor:"portalSubscriptions",
         type:"collection",
         Header:"Subscriptions",
@@ -57,7 +52,7 @@ const validationSchema = Yup.object().shape({
 })
 
 
-export default function App(){
+export default function CollectionTest(){
     return <div className={"mx-5 px-5"}>
         <FormGeneratorThemeContextProvider theme="bootstrap">
             <FormGeneratorContextProvider validationSchema={validationSchema} elements={companyFormElements} initialValues={initialValues} onSubmit={(values)=>{console.log("values",values)}}>
@@ -82,7 +77,7 @@ const Portals = () => {
             <Button disabled={theme === "bootstrap"} onClick={()=>{setTheme("bootstrap")}}>Bootstrap</Button>
             <Button disabled={theme === "material-ui"} onClick={()=>{setTheme("material-ui")}}>Material - UI</Button>
             <div>
-                <FormElement accessor={"companyName"}/>
+                <FormElement accessor={"portalSubscriptions"} nestedForm={PortalSubscriptionForm}/>
                 {/*<FormElement accessor={"portalSubscriptions"} nestedForm={PortalSubscriptionForm}/>*/}
             </div>
         </div>
@@ -93,19 +88,10 @@ const Portals = () => {
 }
 
 const PortalSubscriptionForm = (index:number) => {
-
-
     return <Row>
         <Col xs={12} >
-            <FormElement accessor={"portal"} nestedForm={PortalForm}></FormElement>
+            <FormElement accessor={"credentials"} nestedForm={PortalForm}/>
         </Col>
-        <Col xs={12}  >
-            <FormElement accessor={"active"}/>
-        </Col>
-        <Col xs={12}  >
-            <FormElement accessor={"credentials"}/>
-        </Col>
-
     </Row>
 }
 
