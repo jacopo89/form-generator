@@ -1,7 +1,7 @@
 import {SelectOption} from "./form-elements/interfaces/SelectElementInterface";
 import {RadioOption} from "./form-elements/interfaces/RadioElementInterface";
 
-export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"
+export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"| "switch"
 export type FileType = "*" | "image/*" | "application/*" | "application/pdf"
 
 export default interface ElementInterface{
@@ -89,7 +89,11 @@ export interface TelephoneElementInterface extends ElementInterface{
     type:"tel"
 }
 
+export interface SwitchElementInterface extends ElementInterface{
+    type:"switch"
+}
 
 
-export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface
+
+export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface
 export type FormElements = GenericElementInterface[]
