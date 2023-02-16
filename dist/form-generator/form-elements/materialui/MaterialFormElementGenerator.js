@@ -9,7 +9,7 @@ import CollectionFormField from "./fields/CollectionFormField";
 import EmbeddedFormField from "./fields/EmbeddedFormField";
 import DictionaryFormField from "./fields/DictionaryFormField";
 import WYSIWYGFormField from "./fields/WYSIWYGFormField";
-import PriceFormField from "../bootstrap/fields/PriceFormField";
+import PriceFormField from "./fields/PriceFormField";
 export default function MaterialFormElementGenerator(props) {
     const { type } = props;
     switch (type) {

@@ -2,8 +2,9 @@ import {NumberElementInterface} from "../../interfaces/NumberElementInterface";
 import {getNestedValue} from "../../utils/form-generator-utils";
 import {TextField} from "@mui/material";
 import React from "react";
+import {PriceElementInterface} from "../../interfaces/PriceElementInterface";
 
-export default function NumberFormField(props:NumberElementInterface){
+export default function PriceFormField(props:PriceElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header,disable} = props
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
@@ -16,7 +17,6 @@ export default function NumberFormField(props:NumberElementInterface){
             disabled={disable}
             error={nestedTouched && nestedError!==undefined}
             fullWidth
-            label={Header}
             name={accessor}
             onChange={onChange}
             type="float"

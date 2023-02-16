@@ -30,7 +30,7 @@ const nestedBasicElements = [
 ];
 export default function DictionaryFormField({ accessor, initialValues }) {
     const { setFieldValue, disable, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
-    const existingElements = useMemo(() => getNestedValue(accessor, values), [accessor, values]);
+    const existingElements = getNestedValue(accessor, values);
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor === accessor);
     if (!Array.isArray(getNestedValue(accessor, values)))
@@ -54,7 +54,9 @@ export default function DictionaryFormField({ accessor, initialValues }) {
     const nestedForms = useMemo(() => {
         return existingElements.map((element, index) => {
             const indexAccessor = `${accessor}[${index}]`;
-            return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] }) })), _jsx(Divider, { light: true })] }))] }), index));
+            return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
+                                        return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
+                                    } }) })), _jsx(Divider, { light: true })] }))] }), index));
         });
     }, [existingElements, accessor, initialValues, nestedElements]);
     if (collectionElement === undefined)

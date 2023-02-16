@@ -15,7 +15,6 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
 
-
     if(!Array.isArray(getNestedValue(accessor,values))) console.log("accessor", accessor)
     const existing = getNestedValue(accessor,values).length
 
@@ -24,9 +23,9 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
     const nestedForms = useMemo(()=>{
         return existingElements.map((element:any,index:number)=>{
                 const indexAccessor = `${accessor}[${index}]`
-                return (<Row className={"mb-3"}>
-                        <Col xs={1}>
-                            { (!disable && !lockList) ? <Button className={"btn-sm p-1 rounded-circle bg-danger"}
+                return (<Row key={index} className={"mb-3"}>
+                        <Col xs={1} className={"d-flex justify-content-center align-items-center"}>
+                            { (!disable && !lockList) ? <Button className={"btn-sm p-1 rounded-circle btn-danger"}
                                      onClick={() => unsetFieldValue(indexAccessor)}>
                                 <DeleteIcon/>
                             </Button> : <div>{index+1}</div>}

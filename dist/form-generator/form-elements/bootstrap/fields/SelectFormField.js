@@ -5,7 +5,7 @@ import Select from "react-select";
 import { Form } from "react-bootstrap";
 import { getNestedValue } from "../../utils/form-generator-utils";
 export default function SelectFormField(element) {
-    const { type, values, disable, errors, options, touched, setFieldValue, accessor, Header } = element;
+    const { type, values, disable, errors, options = [], touched, setFieldValue, accessor, Header } = element;
     const [value, setValue] = useState(options.find(option => option.value === getNestedValue(accessor, values)));
     const updateSelectValue = useCallback(() => {
         if (options.find(option => option.value === getNestedValue(accessor, values)) !== value) {

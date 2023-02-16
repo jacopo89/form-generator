@@ -15,7 +15,6 @@ export default function TextFormField(props:TextElementInterface){
         disabled={disable}
         error={nestedTouched && nestedError!==undefined}
         fullWidth
-        label={Header}
         name={accessor}
         onChange={(e)=>setFieldValue(e.target.value)}
         type="text"

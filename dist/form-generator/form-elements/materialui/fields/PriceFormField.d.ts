@@ -1,3 +1,3 @@
 /// <reference types="react" />
-import { NumberElementInterface } from "../../interfaces/NumberElementInterface";
-export default function NumberFormField(props: NumberElementInterface): JSX.Element;
+import { PriceElementInterface } from "../../interfaces/PriceElementInterface";
+export default function PriceFormField(props: PriceElementInterface): JSX.Element;

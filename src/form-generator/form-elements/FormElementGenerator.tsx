@@ -21,6 +21,7 @@ import {TelephoneElementInterface} from "./interfaces/TelephoneElementInterface"
 import {WYSIWYGElementInterface} from "./interfaces/WYSIWYGElementInterface";
 import MaterialFormElementGenerator from "./materialui/MaterialFormElementGenerator";
 import {SwitchElementInterface} from "./interfaces/SwitchElementInterface";
+import {FormElementInterface} from "./interfaces/FormElementInterface";
 
 export type GenericFormElementInterface =
     TextElementInterface |
@@ -40,7 +41,8 @@ export type GenericFormElementInterface =
     PriceElementInterface |
     TelephoneElementInterface |
     DictionaryElementInterface |
-    SwitchElementInterface
+    SwitchElementInterface |
+    FormElementInterface
 
 export default function FormElementGenerator(props:GenericFormElementInterface) {
     const theme = useFormGeneratorThemeContext();

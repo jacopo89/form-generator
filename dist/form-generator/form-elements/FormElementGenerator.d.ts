@@ -17,5 +17,6 @@ import { TagsElementInterface } from "./interfaces/TagElementInterface";
 import { TelephoneElementInterface } from "./interfaces/TelephoneElementInterface";
 import { WYSIWYGElementInterface } from "./interfaces/WYSIWYGElementInterface";
 import { SwitchElementInterface } from "./interfaces/SwitchElementInterface";
-export declare type GenericFormElementInterface = TextElementInterface | SelectElementInterface | RadioElementInterface | CheckboxElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface;
+import { FormElementInterface } from "./interfaces/FormElementInterface";
+export declare type GenericFormElementInterface = TextElementInterface | SelectElementInterface | RadioElementInterface | CheckboxElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface | FormElementInterface;
 export default function FormElementGenerator(props: GenericFormElementInterface): JSX.Element;

@@ -10,7 +10,9 @@ export default function TextFormField(props:TextElementInterface){
 
     return <Form.Group as={"div"} style={{position:"relative"}}>
         <Form.Label>{Header}</Form.Label>
-        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(e.target.value)} />
+        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} disabled={disable} type="text" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>{
+            setFieldValue(e.target.value)
+        }} />
         <Form.Control.Feedback
             className="font-weight-bold"
             type="invalid"

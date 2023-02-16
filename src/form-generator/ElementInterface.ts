@@ -1,7 +1,7 @@
 import {SelectOption} from "./form-elements/interfaces/SelectElementInterface";
 import {RadioOption} from "./form-elements/interfaces/RadioElementInterface";
 
-export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"| "switch"
+export type ElementType  = "text" | "number" | "select" | "radio" | "checkbox" | "file" | "wysiwyg" | "tags" | "collection" | "embedded" | "date" | "countries" | "password" | "float" | "price" | "tel" | "dictionary"| "switch" | "form"
 export type FileType = "*" | "image/*" | "application/*" | "application/pdf"
 
 export default interface ElementInterface{
@@ -93,7 +93,12 @@ export interface SwitchElementInterface extends ElementInterface{
     type:"switch"
 }
 
+export interface FormElementInterface extends ElementInterface{
+    type:"form",
+    initialValues: object,
+}
 
 
-export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface
+
+export type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface|NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface |FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface | FormElementInterface
 export type FormElements = GenericElementInterface[]

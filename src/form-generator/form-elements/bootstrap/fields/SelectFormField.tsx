@@ -6,7 +6,7 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import SelectElementInterface, {SelectOption} from "../../interfaces/SelectElementInterface";
 
 export default function SelectFormField(element:SelectElementInterface){
-    const {type,values,disable, errors,options, touched,setFieldValue,accessor,Header} = element
+    const {type,values,disable, errors,options=[], touched,setFieldValue,accessor,Header} = element
 
     const [value, setValue] = useState<SelectOption|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
 
