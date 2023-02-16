@@ -20,15 +20,9 @@ export default function EmbeddedFormField({accessor,nestedForm,initialValues}:Em
     const nestedForms = useMemo(()=>{
         return (<Row className={"mb-3"}>
                     <Col xs={12}>
-                        <FormGeneratorContextProvider formValue={formValue} elements={nestedElements} initialValues={initialValues} existingValue={existingElement}  accessorRoot={accessorRoot} onChange={(value) => {
-                            console.log("accessor when saving embedded",accessor)
-                            return setFieldValue(accessor,value)
-                        }}>
-                            {nestedForm(1)}
-                        </FormGeneratorContextProvider>
+                        <FormGeneratorContextProvider formValue={formValue} elements={nestedElements} initialValues={initialValues} existingValue={existingElement}  accessorRoot={accessorRoot} onChange={(value) => setFieldValue(accessor, value)} children={nestedForm ? nestedForm(1) : undefined}/>
                         <Divider light/>
                     </Col>
-
                 </Row>)
     },[existingElement, accessor, initialValues])
 

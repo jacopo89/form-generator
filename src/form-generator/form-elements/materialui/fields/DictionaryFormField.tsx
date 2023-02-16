@@ -95,7 +95,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
     return <div>
         {nestedForms}
         {
-            <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}>
+            <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,{})}}>
                 Add
             </Button>
         }

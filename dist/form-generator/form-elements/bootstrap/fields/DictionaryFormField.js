@@ -51,15 +51,13 @@ export default function DictionaryFormField({ accessor, initialValues }) {
         });
         return finalElements;
     }, [existingElements]);
-    const nestedForms = useMemo(() => {
-        return existingElements.map((element, index) => {
-            const indexAccessor = `${accessor}[${index}]`;
-            return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
-                                        return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
-                                    } }) })), _jsx(Divider, { light: true })] }))] }), index));
-        });
-    }, [existingElements, accessor, initialValues, nestedElements]);
+    const nestedForms = existingElements.map((element, index) => {
+        const indexAccessor = `${accessor}[${index}]`;
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
+                                    return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
+                                } }) })), _jsx(Divider, { light: true })] }))] }), index));
+    });
     if (collectionElement === undefined)
         return _jsx("div", { children: accessor });
-    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }, { children: "Add" }))] });
+    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, {}); } }, { children: "Add" }))] });
 }

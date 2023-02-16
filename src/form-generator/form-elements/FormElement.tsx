@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import React, {useContext} from "react";
 import FormGeneratorContext from "../form-context/FormGeneratorContext";
 import {GenericElementInterface} from "../ElementInterface";
 import {getAccessorElementsNoIndex, getNestedValue} from "./utils/form-generator-utils";
@@ -11,6 +11,8 @@ interface FormElementInterface {
     accessor:string,
     nestedForm?:(index:number)=>JSX.Element,
     options?:SelectOption[] | RadioOption[],
+    addButton?:any,
+    removeButton?:any,
 }
 
 function getElement(elements: GenericElementInterface[], accessorParsed: string[]) {
@@ -29,7 +31,7 @@ function getElement(elements: GenericElementInterface[], accessorParsed: string[
     return element;
 }
 
-export default function FormElement({accessor,nestedForm, options}:FormElementInterface){
+export default function FormElement({accessor,nestedForm, options,...others}:FormElementInterface){
     const {values,errors,touched,setFieldValue,elements,accessorRoot,disable} = useContext(FormGeneratorContext)
     const accessorParsed = getAccessorElementsNoIndex(accessor)
     const element = getElement(elements,accessorParsed);
@@ -38,9 +40,8 @@ export default function FormElement({accessor,nestedForm, options}:FormElementIn
     const finalOptions = options || element?.options
     const finalAccessor = accessor
     if(element){
-
         // @ts-ignore
-        return <FormElementGenerator nestedForm={nestedForm} {...element} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions}/>
+        return <FormElementGenerator nestedForm={nestedForm} {...element} {...others} disable={disable} accessorRoot={accessorRoot} type={element.type} values={values} errors={errors} touched={touched} setFieldValue={(value) => setFieldValue(finalAccessor, value)} Header={element.Header} accessor={finalAccessor} options={finalOptions} />
     }
     return <div>{accessor}</div>
 

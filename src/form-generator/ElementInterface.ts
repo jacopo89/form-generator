@@ -60,7 +60,6 @@ export interface CollectionElementInterface extends ElementInterface{
 
 export interface DictionaryElementInterface extends ElementInterface{
     type:"dictionary",
-    initialValues: object,
 }
 
 export interface EmbeddedElementInterface extends ElementInterface{
@@ -95,7 +94,6 @@ export interface SwitchElementInterface extends ElementInterface{
 
 export interface FormElementInterface extends ElementInterface{
     type:"form",
-    initialValues: object,
 }
 
 

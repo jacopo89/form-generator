@@ -1,5 +1,6 @@
 import ElementInterface from "./ElementInterface";
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
+import React from 'react';
 export default interface BasicFormElementInterface extends ElementInterface {
     values: FormikValues;
     errors: FormikErrors<FormikValues>;
@@ -7,4 +8,8 @@ export default interface BasicFormElementInterface extends ElementInterface {
     setFieldValue: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>>;
     accessorRoot?: string;
     disable?: boolean;
+}
+export interface WithButtonElementInterface extends BasicFormElementInterface {
+    addButton?: React.ReactHTMLElement<any>;
+    removeButton?: React.ReactHTMLElement<any>;
 }

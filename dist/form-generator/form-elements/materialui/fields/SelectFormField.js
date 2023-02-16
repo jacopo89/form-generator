@@ -1,4 +1,4 @@
-import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useCallback, useEffect, useState } from "react";
 import { getNestedValue } from "../../utils/form-generator-utils";
 import { MenuItem, TextField } from "@mui/material";
@@ -15,5 +15,5 @@ export default function SelectFormField(element) {
     useEffect(() => {
         updateSelectValue();
     }, [values]);
-    return _jsx(_Fragment, { children: _jsx(TextField, Object.assign({ disabled: disable, error: nestedTouched && nestedError !== undefined, fullWidth: true, helperText: nestedTouched ? (nestedError !== null && nestedError !== void 0 ? nestedError : "") : "", label: Header, onChange: (e) => setFieldValue(e.target.value), select: true, value: value, variant: "outlined" }, { children: options.map((option) => (_jsx(MenuItem, Object.assign({ value: option.value }, { children: option.label }), option.value))) })) });
+    return _jsxs(_Fragment, { children: [_jsx("span", { children: Header }), _jsx(TextField, Object.assign({ disabled: disable, error: nestedTouched && nestedError !== undefined, fullWidth: true, helperText: nestedTouched ? (nestedError !== null && nestedError !== void 0 ? nestedError : "") : "", onChange: (e) => setFieldValue(e.target.value), select: true, value: value, variant: "outlined" }, { children: options.map((option) => (_jsx(MenuItem, Object.assign({ value: option.value }, { children: option.label }), option.value))) }))] });
 }

@@ -1,10 +1,9 @@
 /// <reference types="react" />
-import BasicFormElementInterface from "../../BasicFormElementInterface";
+import { WithButtonElementInterface } from "../../BasicFormElementInterface";
 import { FormElements } from "../../ElementInterface";
-export interface CollectionElementInterface extends BasicFormElementInterface {
+export interface CollectionElementInterface extends WithButtonElementInterface {
     type: "collection";
     formElements: FormElements;
-    buttonLabel: string;
     nestedForm: (index: number) => JSX.Element;
     initialValues: object;
     lockList?: boolean;

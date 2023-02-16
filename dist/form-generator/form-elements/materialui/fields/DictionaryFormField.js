@@ -58,5 +58,5 @@ export default function DictionaryFormField({ accessor, initialValues }) {
     }, [existingElements, accessor, initialValues, nestedElements]);
     if (collectionElement === undefined)
         return _jsx("div", { children: accessor });
-    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }, { children: "Add" }))] });
+    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, {}); } }, { children: "Add" }))] });
 }

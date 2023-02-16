@@ -47,7 +47,6 @@ export interface CollectionElementInterface extends ElementInterface {
 }
 export interface DictionaryElementInterface extends ElementInterface {
     type: "dictionary";
-    initialValues: object;
 }
 export interface EmbeddedElementInterface extends ElementInterface {
     type: "embedded";
@@ -75,7 +74,6 @@ export interface SwitchElementInterface extends ElementInterface {
 }
 export interface FormElementInterface extends ElementInterface {
     type: "form";
-    initialValues: object;
 }
 export declare type GenericElementInterface = TextElementInterface | SelectElementInterface | CheckboxElementInterface | RadioElementInterface | WYSIWYGElementInterface | TagsElementInterface | NumberElementInterface | CollectionElementInterface | EmbeddedElementInterface | FileElementInterface | DateElementInterface | CountriesElementInterface | PasswordElementInterface | FloatElementInterface | PriceElementInterface | TelephoneElementInterface | DictionaryElementInterface | SwitchElementInterface | FormElementInterface;
 export declare type FormElements = GenericElementInterface[];

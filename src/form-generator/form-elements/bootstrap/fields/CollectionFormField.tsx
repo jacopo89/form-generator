@@ -4,13 +4,19 @@ import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
 import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import {getNestedValue} from "../../utils/form-generator-utils";
 import DeleteIcon from '@mui/icons-material/Delete';
+import AddIcon from '@mui/icons-material/Add';
 import {Divider} from "@mui/material";
 import {CollectionElementInterface} from "../../interfaces/CollectionElementInterface";
 
-export default function CollectionFormField({accessor, nestedForm, buttonLabel ="Aggiungi",initialValues, lockList=false}:CollectionElementInterface){
+export default function CollectionFormField({accessor, nestedForm, addButton:addButtonProps, removeButton:removeButtonProps,initialValues, lockList=false}:CollectionElementInterface){
 
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor,values)
+
+    const addButton = (!disable && !lockList) && ( (addButtonProps) ?  React.cloneElement(addButtonProps,{onClick:(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}) : <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}><AddIcon/></Button>)
+    const removeButton = (indexAccessor:string) => {
+        return (!disable && !lockList) && ( (removeButtonProps) ?  React.cloneElement(removeButtonProps,{onClick:() => unsetFieldValue(indexAccessor)}) : <Button onClick={() => unsetFieldValue(indexAccessor)}><DeleteIcon/></Button>)
+    }
 
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
@@ -25,15 +31,10 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
                 const indexAccessor = `${accessor}[${index}]`
                 return (<Row key={index} className={"mb-3"}>
                         <Col xs={1} className={"d-flex justify-content-center align-items-center"}>
-                            { (!disable && !lockList) ? <Button className={"btn-sm p-1 rounded-circle btn-danger"}
-                                     onClick={() => unsetFieldValue(indexAccessor)}>
-                                <DeleteIcon/>
-                            </Button> : <div>{index+1}</div>}
+                            {removeButton(indexAccessor)}
                         </Col>
                         <Col xs={11}>
-                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
-                                {nestedForm(index)}
-                            </FormGeneratorContextProvider>
+                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor, values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)} children={nestedForm ? nestedForm(index) : undefined}/>
                             <Divider light/>
                         </Col>
 
@@ -41,15 +42,9 @@ export default function CollectionFormField({accessor, nestedForm, buttonLabel =
                 )})
     },[existingElements, accessor, initialValues])
 
-
     if(collectionElement === undefined) return <div>{accessor}</div>
     return <div>
         {nestedForms}
-        {
-            (!disable && !lockList) && <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}>
-                {buttonLabel}
-            </Button>
-        }
-
+        {addButton}
     </div>
 }

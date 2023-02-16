@@ -32,11 +32,8 @@ const nestedBasicElements:FormElements = [
 ]
 
 export default function DictionaryFormField({accessor,initialValues}:DictionaryElementInterface){
-
-
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor,values)
-
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
 
@@ -61,8 +58,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
     },[existingElements])
 
 
-    const nestedForms = useMemo(()=>{
-        return existingElements.map((element:any,index:number)=>{
+    const nestedForms = existingElements.map((element:any,index:number)=>{
             const indexAccessor = `${accessor}[${index}]`
             return (<Row key={index} className={"mb-3"}>
                     <Col xs={1}>
@@ -94,14 +90,13 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
 
                 </Row>
             )})
-    },[existingElements, accessor, initialValues, nestedElements])
 
 
     if(collectionElement === undefined) return <div>{accessor}</div>
     return <div>
         {nestedForms}
         {
-            <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}>
+            <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,{})}}>
                 Add
             </Button>
         }

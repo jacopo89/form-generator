@@ -1,8 +1,10 @@
 import {FormikErrors, FormikTouched, FormikValues, useFormik} from "formik";
 import {useCallback, useEffect} from "react";
-import FormGeneratorContext from "./FormGeneratorContext";
-import {GenericElementInterface} from "../ElementInterface";
+
+import {FormElements, GenericElementInterface} from "../ElementInterface";
 import {isArrayElementAccessor} from "../form-elements/utils/form-generator-utils";
+import FormElement from "../form-elements/FormElement";
+import FormGeneratorContext from "./FormGeneratorContext";
 
 type ConditionalProps = {
     accessorRoot?: string;
@@ -98,6 +100,7 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     useEffect(()=>{console.log("values",errors)},[errors])
 */
 
+
     const formContent = (onSubmit) ? <form noValidate onSubmit={handleSubmit}>{children}</form> : children
 
     const unsetFieldValue = (accessor:string) => {
@@ -121,6 +124,30 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     }
 
     return <FormGeneratorContext.Provider value={{formValue:values, disable, values,errors, touched, setFieldValue, unsetFieldValue, elements, submitForm,accessorRoot, isValid,isValidating,isSubmitting}}>
-        {formContent}
+        <FormContent onSubmit={onSubmit} formElements={elements} handleSubmit={handleSubmit} children={children} />
     </FormGeneratorContext.Provider>
+}
+
+interface FormContentInterface{
+    children?:any,
+    onSubmit?:(values:any) => void | Promise<any>,
+    formElements:FormElements,
+    handleSubmit:any
+}
+
+// @ts-ignore
+const FormContent = ({children,onSubmit,formElements,handleSubmit}:FormContentInterface) => {
+
+    if(children) console.log("children",children)
+    const content = (children) ?? <FormGeneratorContext.Consumer>
+        {()=>{
+            return formElements.map(formElement => <div>
+                <div>
+                    <FormElement accessor={formElement.accessor}/>
+                </div>
+            </div>)
+        }}
+    </FormGeneratorContext.Consumer>
+
+    return (onSubmit) ? <form noValidate onSubmit={handleSubmit}>{content}</form> : <>{content}</>
 }

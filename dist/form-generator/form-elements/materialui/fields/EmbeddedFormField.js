@@ -12,10 +12,7 @@ export default function EmbeddedFormField({ accessor, nestedForm, initialValues 
     // @ts-ignore
     const nestedElements = embeddedElement.formElements;
     const nestedForms = useMemo(() => {
-        return (_jsx(Grid, Object.assign({ container: true, className: "mb-3" }, { children: _jsxs(Grid, Object.assign({ item: true, xs: 12 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ formValue: formValue, elements: nestedElements, initialValues: initialValues, existingValue: existingElement, accessorRoot: accessorRoot, onChange: (value) => {
-                            console.log("accessor when saving embedded", accessor);
-                            return setFieldValue(accessor, value);
-                        } }, { children: nestedForm(1) })), _jsx(Divider, { light: true })] })) })));
+        return (_jsx(Grid, Object.assign({ container: true, className: "mb-3" }, { children: _jsxs(Grid, Object.assign({ item: true, xs: 12 }, { children: [_jsx(FormGeneratorContextProvider, { children: nestedForm ? nestedForm(1) : undefined, formValue: formValue, elements: nestedElements, initialValues: initialValues, existingValue: existingElement, accessorRoot: accessorRoot, onChange: (value) => setFieldValue(accessor, value) }), _jsx(Divider, { light: true })] })) })));
     }, [existingElement, accessor, initialValues]);
     if (embeddedElement === undefined)
         return _jsx("div", { children: accessor });

@@ -9,6 +9,7 @@ import {Divider} from "@mui/material";
 import FormElement from "../../FormElement";
 import {FormElementInterface} from "../../interfaces/FormElementInterface";
 import _ from 'lodash';
+import AddIcon from "@mui/icons-material/Add";
 
 const nestedBasicElements:FormElements = [
     {
@@ -51,10 +52,16 @@ const initialValues = {
     options:[]
 }
 
-export default function FormFormField({accessor}:FormElementInterface){
+export default function FormFormField({accessor, addButton:addButtonProps, removeButton:removeButtonProps}:FormElementInterface){
 
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor,values)
+
+    const addButton =  ( (addButtonProps) ?  React.cloneElement(addButtonProps,{onClick:(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}) : <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}><AddIcon/></Button>)
+    const removeButton = (indexAccessor:string) => {
+        return  ( (removeButtonProps) ?  React.cloneElement(removeButtonProps,{onClick:() => unsetFieldValue(indexAccessor)}) : <Button onClick={() => unsetFieldValue(indexAccessor)}><DeleteIcon/></Button>)
+    }
+
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
     if(!Array.isArray(getNestedValue(accessor,values))) console.log("accessor", accessor)
@@ -82,9 +89,7 @@ export default function FormFormField({accessor}:FormElementInterface){
 
             return (<Row key={index} className={"mb-3"}>
                     <Col xs={1} className={"d-flex justify-content-center align-items-center"}>
-                        <Button className={"btn-sm btn-danger rounded-circle p-1"} onClick={() => unsetFieldValue(indexAccessor)}>
-                            <DeleteIcon/>
-                        </Button>
+                        {removeButton(indexAccessor)}
                     </Col>
                     <Col xs={11}>
                         <FormGeneratorContextProvider disable={disable} formValue={formValue} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => {
@@ -118,8 +123,7 @@ export default function FormFormField({accessor}:FormElementInterface){
     if(collectionElement === undefined) return <div>{accessor}</div>
     return <div>
         {nestedForms}
-        <Button type="button" onClick={(e)=>{e.preventDefault();setFieldValue(`${accessor}[${existing}]`,initialValues)}}>Add</Button>
-
+        {addButton}
     </div>
 }
 
