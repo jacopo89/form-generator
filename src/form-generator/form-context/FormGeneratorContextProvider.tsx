@@ -5,6 +5,7 @@ import {FormElements, GenericElementInterface} from "../ElementInterface";
 import {isArrayElementAccessor} from "../form-elements/utils/form-generator-utils";
 import FormElement from "../form-elements/FormElement";
 import FormGeneratorContext from "./FormGeneratorContext";
+import FormButtonGenerator from "../form-button/FormButtonGenerator";
 
 type ConditionalProps = {
     accessorRoot?: string;
@@ -101,8 +102,6 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
 */
 
 
-    const formContent = (onSubmit) ? <form noValidate onSubmit={handleSubmit}>{children}</form> : children
-
     const unsetFieldValue = (accessor:string) => {
         if(isArrayElementAccessor(accessor)){
             const arrayAccessorStartingPosition = accessor.lastIndexOf("[");
@@ -137,15 +136,18 @@ interface FormContentInterface{
 
 // @ts-ignore
 const FormContent = ({children,onSubmit,formElements,handleSubmit}:FormContentInterface) => {
-
-    if(children) console.log("children",children)
+    const button = onSubmit && <FormButtonGenerator/>
     const content = (children) ?? <FormGeneratorContext.Consumer>
         {()=>{
-            return formElements.map(formElement => <div>
-                <div>
-                    <FormElement accessor={formElement.accessor}/>
-                </div>
-            </div>)
+            return <>
+                {formElements.map(formElement => <div>
+                    <div>
+                        <FormElement accessor={formElement.accessor}/>
+                    </div>
+                </div>)
+                }
+                {button}
+            </>
         }}
     </FormGeneratorContext.Consumer>
 

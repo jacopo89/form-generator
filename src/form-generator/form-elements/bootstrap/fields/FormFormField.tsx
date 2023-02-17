@@ -98,10 +98,10 @@ export default function FormFormField({accessor, addButton:addButtonProps, remov
                             <FormGeneratorContext.Consumer>
                                 {({values})=>{
                                     return <Row>
-                                        <Col xs={4}>
+                                        <Col xs={6}>
                                             <FormElement accessor={"Header"}/>
                                         </Col>
-                                        <Col xs={4}>
+                                        <Col xs={6}>
                                             <FormElement accessor={"type"}/>
                                         </Col>
                                         {values["type"] ==="select" && <Row>
@@ -113,7 +113,6 @@ export default function FormFormField({accessor, addButton:addButtonProps, remov
                                 }}
                             </FormGeneratorContext.Consumer>
                         </FormGeneratorContextProvider>
-                        <Divider light/>
                     </Col>
 
                 </Row>

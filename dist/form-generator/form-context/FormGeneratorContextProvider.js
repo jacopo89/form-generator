@@ -1,9 +1,10 @@
-import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { useFormik } from "formik";
 import { useCallback, useEffect } from "react";
 import { isArrayElementAccessor } from "../form-elements/utils/form-generator-utils";
 import FormElement from "../form-elements/FormElement";
 import FormGeneratorContext from "./FormGeneratorContext";
+import FormButtonGenerator from "../form-button/FormButtonGenerator";
 export default function FormGeneratorContextProvider({ formValue, disable = false, elements, validationSchema, initialValues, onSubmit, children, existingValue, existingErrors, accessorRoot, onChange }) {
     const onSubmitHandler = (values) => {
         if (onSubmit) {
@@ -63,7 +64,6 @@ export default function FormGeneratorContextProvider({ formValue, disable = fals
     /*useEffect(()=>{console.log("values",values)},[values])
     useEffect(()=>{console.log("values",errors)},[errors])
 */
-    const formContent = (onSubmit) ? _jsx("form", Object.assign({ noValidate: true, onSubmit: handleSubmit }, { children: children })) : children;
     const unsetFieldValue = (accessor) => {
         if (isArrayElementAccessor(accessor)) {
             const arrayAccessorStartingPosition = accessor.lastIndexOf("[");
@@ -88,10 +88,9 @@ export default function FormGeneratorContextProvider({ formValue, disable = fals
 // @ts-ignore
 const FormContent = ({ children, onSubmit, formElements, handleSubmit }) => {
     var _a;
-    if (children)
-        console.log("children", children);
+    const button = onSubmit && _jsx(FormButtonGenerator, {});
     const content = (_a = (children)) !== null && _a !== void 0 ? _a : _jsx(FormGeneratorContext.Consumer, { children: () => {
-            return formElements.map(formElement => _jsx("div", { children: _jsx("div", { children: _jsx(FormElement, { accessor: formElement.accessor }) }) }));
+            return _jsxs(_Fragment, { children: [formElements.map(formElement => _jsx("div", { children: _jsx("div", { children: _jsx(FormElement, { accessor: formElement.accessor }) }) })), button] });
         } });
     return (onSubmit) ? _jsx("form", Object.assign({ noValidate: true, onSubmit: handleSubmit }, { children: content })) : _jsx(_Fragment, { children: content });
 };

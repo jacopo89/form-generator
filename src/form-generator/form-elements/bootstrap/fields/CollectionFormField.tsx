@@ -26,21 +26,19 @@ export default function CollectionFormField({accessor, nestedForm, addButton:add
 
     // @ts-ignore
     const nestedElements= collectionElement.formElements
-    const nestedForms = useMemo(()=>{
-        return existingElements.map((element:any,index:number)=>{
+    const nestedForms =  existingElements.map((element:any,index:number)=>{
                 const indexAccessor = `${accessor}[${index}]`
                 return (<Row key={index} className={"mb-3"}>
                         <Col xs={1} className={"d-flex justify-content-center align-items-center"}>
                             {removeButton(indexAccessor)}
                         </Col>
                         <Col xs={11}>
-                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor, values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)} children={nestedForm ? nestedForm(index) : undefined}/>
+                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor, values)}  accessorRoot={indexAccessor} onChange={(value) => {setFieldValue(indexAccessor, value)}} children={nestedForm ? nestedForm(index) : undefined}/>
                             <Divider light/>
                         </Col>
 
                     </Row>
                 )})
-    },[existingElements, accessor, initialValues])
 
     if(collectionElement === undefined) return <div>{accessor}</div>
     return <div>
