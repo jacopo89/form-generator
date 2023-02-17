@@ -6,7 +6,7 @@ import { getNestedValue } from "../../utils/form-generator-utils";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Divider, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 export default function CollectionFormField({ accessor, nestedForm, addButton: addButtonProps, removeButton: removeButtonProps, initialValues, lockList = false }) {
     const { setFieldValue, disable, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor, values);

@@ -4,7 +4,7 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import {Grid} from "@mui/material";
 import {EmbeddedElementInterface} from "../../interfaces/EmbeddedElementInterface";
-import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 
 export default function EmbeddedFormField({accessor,nestedForm,initialValues}:EmbeddedElementInterface){
     const {setFieldValue,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);

@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {Divider} from "@mui/material";
 import FormElement from "../../FormElement";
 import { DictionaryElementInterface } from "../../interfaces/DictionaryElementInterface";
-import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 
 const nestedBasicElements:FormElements = [
     {

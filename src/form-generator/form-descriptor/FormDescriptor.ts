@@ -8,7 +8,7 @@ interface FormDescriptorInterface{
     initialValues:object
 }
 
-export class FormDescriptor{
+export default class FormDescriptor{
     elements:FormElements
     validationSchema: Yup.ObjectSchema<any>
     initialValues:object

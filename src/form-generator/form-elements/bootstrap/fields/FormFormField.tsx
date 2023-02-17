@@ -5,12 +5,11 @@ import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
 import {getNestedValue} from "../../utils/form-generator-utils";
 import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {Divider} from "@mui/material";
 import FormElement from "../../FormElement";
 import {FormElementInterface} from "../../interfaces/FormElementInterface";
 import _ from 'lodash';
 import AddIcon from "@mui/icons-material/Add";
-import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 
 const nestedBasicElements:FormElements = [
     {

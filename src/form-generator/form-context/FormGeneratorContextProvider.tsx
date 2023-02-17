@@ -1,12 +1,12 @@
 import {FormikErrors, FormikTouched, FormikValues, useFormik} from "formik";
 import {useCallback, useEffect} from "react";
 
-import {FormElements, GenericElementInterface} from "../ElementInterface";
+import {FormElements} from "../ElementInterface";
 import {isArrayElementAccessor} from "../form-elements/utils/form-generator-utils";
 import FormElement from "../form-elements/FormElement";
 import FormGeneratorContext from "./FormGeneratorContext";
 import FormButtonGenerator from "../form-button/FormButtonGenerator";
-import {FormDescriptor} from "../form-descriptor/FormDescriptor";
+import FormDescriptor from "../form-descriptor/FormDescriptor";
 
 type ConditionalProps = {
     accessorRoot?: string;

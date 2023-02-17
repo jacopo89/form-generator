@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-export class FormDescriptor {
+export default class FormDescriptor {
     constructor({ elements, validationSchema = Yup.object().shape({}), initialValues }) {
         this.initialValues = initialValues;
         this.elements = elements;

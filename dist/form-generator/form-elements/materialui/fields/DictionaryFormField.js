@@ -6,7 +6,7 @@ import FormGeneratorContextProvider from "../../../form-context/FormGeneratorCon
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Divider, Grid, Button } from "@mui/material";
 import FormElement from "../../FormElement";
-import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 const nestedBasicElements = [
     {
         Header: "Key",

@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FormElement from "../../FormElement";
 import _ from 'lodash';
 import AddIcon from "@mui/icons-material/Add";
-import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 const nestedBasicElements = [
     {
         Header: "Accessor",

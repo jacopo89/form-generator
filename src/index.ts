@@ -5,4 +5,5 @@ export {default as FormGeneratorThemeProvider} from "./form-generator-theme/Form
 export {default as FilterGeneratorContext} from "./form-generator/filter-context/FilterGeneratorContext"
 export {default as FilterGeneratorContextProvider} from "./form-generator/filter-context/FilterGeneratorContextProvider"
 export type {FormElements} from "./form-generator/ElementInterface"
+export {default as FormDescriptor} from "./form-generator/form-descriptor/FormDescriptor"
 export {useFormElementValue} from "./form-generator/form-elements/FormElement"

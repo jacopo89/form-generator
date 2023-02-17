@@ -4,7 +4,7 @@ import FormGeneratorContext from "../../../form-context/FormGeneratorContext";
 import { getNestedValue } from "../../utils/form-generator-utils";
 import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import { Grid } from "@mui/material";
-import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 export default function EmbeddedFormField({ accessor, nestedForm, initialValues }) {
     const { setFieldValue, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
     const existingElement = getNestedValue(accessor, values);

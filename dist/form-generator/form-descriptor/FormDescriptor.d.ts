@@ -6,7 +6,7 @@ interface FormDescriptorInterface {
     validationSchema?: Yup.ObjectSchema<any>;
     initialValues: object;
 }
-export declare class FormDescriptor {
+export default class FormDescriptor {
     elements: FormElements;
     validationSchema: Yup.ObjectSchema<any>;
     initialValues: object;

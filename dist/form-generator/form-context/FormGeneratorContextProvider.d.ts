@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
-import { FormDescriptor } from "../form-descriptor/FormDescriptor";
+import FormDescriptor from "../form-descriptor/FormDescriptor";
 declare type ConditionalProps = {
     accessorRoot?: string;
     onSubmit?: never;

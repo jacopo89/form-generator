@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Button, Divider, Grid} from "@mui/material";
 import {CollectionElementInterface} from "../../interfaces/CollectionElementInterface";
 import AddIcon from "@mui/icons-material/Add";
-import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
+import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 
 export default function CollectionFormField({accessor, nestedForm,addButton:addButtonProps,removeButton:removeButtonProps, initialValues, lockList=false}:CollectionElementInterface){
 
