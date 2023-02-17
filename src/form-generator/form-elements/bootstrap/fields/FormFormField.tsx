@@ -10,6 +10,7 @@ import FormElement from "../../FormElement";
 import {FormElementInterface} from "../../interfaces/FormElementInterface";
 import _ from 'lodash';
 import AddIcon from "@mui/icons-material/Add";
+import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
 
 const nestedBasicElements:FormElements = [
     {
@@ -86,13 +87,13 @@ export default function FormFormField({accessor, addButton:addButtonProps, remov
 
     const nestedForms = existingElements.map((element:any,index:number)=>{
             const indexAccessor = `${accessor}[${index}]`
-
+            const formDescriptor = new FormDescriptor({elements:nestedElements[index],initialValues})
             return (<Row key={index} className={"mb-3"}>
                     <Col xs={1} className={"d-flex justify-content-center align-items-center"}>
                         {removeButton(indexAccessor)}
                     </Col>
                     <Col xs={11}>
-                        <FormGeneratorContextProvider disable={disable} formValue={formValue} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => {
+                        <FormGeneratorContextProvider disable={disable} formValue={formValue} formDescriptor={formDescriptor} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => {
                             setFieldValue(indexAccessor, {...value,accessor:_.camelCase(value.Header)})
                         }}>
                             <FormGeneratorContext.Consumer>

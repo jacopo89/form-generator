@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Button, Divider, Grid} from "@mui/material";
 import {CollectionElementInterface} from "../../interfaces/CollectionElementInterface";
 import AddIcon from "@mui/icons-material/Add";
+import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
 
 export default function CollectionFormField({accessor, nestedForm,addButton:addButtonProps,removeButton:removeButtonProps, initialValues, lockList=false}:CollectionElementInterface){
 
@@ -19,12 +20,11 @@ export default function CollectionFormField({accessor, nestedForm,addButton:addB
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor ===accessor);
 
-
     if(!Array.isArray(getNestedValue(accessor,values))) console.log("accessor", accessor)
     const existing = getNestedValue(accessor,values).length
-
     // @ts-ignore
     const nestedElements= collectionElement.formElements
+    const formDescriptor = new FormDescriptor({elements:nestedElements,initialValues})
     const nestedForms = useMemo(()=>{
         return existingElements.map((element:any,index:number)=>{
                 const indexAccessor = `${accessor}[${index}]`
@@ -33,7 +33,7 @@ export default function CollectionFormField({accessor, nestedForm,addButton:addB
                             {removeButton(indexAccessor)}
                         </Grid>
                         <Grid item xs={11}>
-                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} elements={nestedElements} initialValues={initialValues} existingValue={getNestedValue(indexAccessor, values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)} children={nestedForm ? nestedForm(index) : undefined}/>
+                            <FormGeneratorContextProvider disable={disable} formValue={formValue} key={index} formDescriptor={formDescriptor} existingValue={getNestedValue(indexAccessor, values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)} children={nestedForm ? nestedForm(index) : undefined}/>
                             <Divider light/>
                         </Grid>
                     </Grid>

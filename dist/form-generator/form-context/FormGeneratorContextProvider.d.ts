@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
-import { GenericElementInterface } from "../ElementInterface";
+import { FormDescriptor } from "../form-descriptor/FormDescriptor";
 declare type ConditionalProps = {
     accessorRoot?: string;
     onSubmit?: never;
@@ -11,10 +11,8 @@ declare type ConditionalProps = {
     onChange?: never;
 };
 declare type CommonProps = {
-    elements: GenericElementInterface[];
-    validationSchema?: any;
-    initialValues: FormikValues;
     children?: any;
+    formDescriptor: FormDescriptor;
     existingValue?: FormikValues;
     existingErrors?: FormikErrors<FormikValues> | undefined;
     existingTouched?: FormikTouched<FormikValues> | undefined;
@@ -22,5 +20,5 @@ declare type CommonProps = {
     disable?: boolean;
 };
 declare type Props = CommonProps & ConditionalProps;
-export default function FormGeneratorContextProvider({ formValue, disable, elements, validationSchema, initialValues, onSubmit, children, existingValue, existingErrors, accessorRoot, onChange }: Props): JSX.Element;
+export default function FormGeneratorContextProvider(props: Props): JSX.Element;
 export {};

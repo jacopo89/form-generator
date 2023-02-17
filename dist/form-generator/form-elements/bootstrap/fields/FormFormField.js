@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FormElement from "../../FormElement";
 import _ from 'lodash';
 import AddIcon from "@mui/icons-material/Add";
+import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
 const nestedBasicElements = [
     {
         Header: "Accessor",
@@ -76,7 +77,8 @@ export default function FormFormField({ accessor, addButton: addButtonProps, rem
     }, [existingElements]);
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsx(Col, Object.assign({ xs: 11 }, { children: _jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => {
+        const formDescriptor = new FormDescriptor({ elements: nestedElements[index], initialValues });
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsx(Col, Object.assign({ xs: 11 }, { children: _jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => {
                             setFieldValue(indexAccessor, Object.assign(Object.assign({}, value), { accessor: _.camelCase(value.Header) }));
                         } }, { children: _jsx(FormGeneratorContext.Consumer, { children: ({ values }) => {
                                 return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "Header" }) })), _jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "type" }) })), values["type"] === "select" && _jsx(Row, { children: _jsx(Col, Object.assign({ xs: 12 }, { children: _jsx(FormElement, { accessor: "options", nestedForm: OptionsForm }) })) })] });

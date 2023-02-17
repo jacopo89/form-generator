@@ -6,6 +6,7 @@ import {isArrayElementAccessor} from "../form-elements/utils/form-generator-util
 import FormElement from "../form-elements/FormElement";
 import FormGeneratorContext from "./FormGeneratorContext";
 import FormButtonGenerator from "../form-button/FormButtonGenerator";
+import {FormDescriptor} from "../form-descriptor/FormDescriptor";
 
 type ConditionalProps = {
     accessorRoot?: string;
@@ -18,10 +19,8 @@ type ConditionalProps = {
 };
 
 type CommonProps = {
-    elements: GenericElementInterface[]
-    validationSchema?:any,
-    initialValues:FormikValues
     children?:any,
+    formDescriptor:FormDescriptor
     existingValue?:FormikValues,
     existingErrors?: FormikErrors<FormikValues>|undefined
     existingTouched?: FormikTouched<FormikValues>|undefined,
@@ -31,7 +30,9 @@ type CommonProps = {
 
 type Props = CommonProps & ConditionalProps
 
-export default function FormGeneratorContextProvider({formValue, disable=false, elements, validationSchema, initialValues,onSubmit, children, existingValue,existingErrors, accessorRoot, onChange}:Props){
+export default function FormGeneratorContextProvider(props:Props){
+    const {formValue, formDescriptor, disable=false ,onSubmit, children, existingValue,existingErrors, accessorRoot, onChange} = props
+    const {elements,validationSchema,initialValues} = formDescriptor
     const onSubmitHandler = (values:FormikValues) => {
         if(onSubmit){
             const onSubmitResponse = onSubmit(values)
@@ -68,8 +69,13 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
     },[values, existingValue,accessorRoot,initialValues])
 
     useEffect(()=>{
+        console.log("Value is changing, trying to update parent.",values)
         updateWhenValuesChange()
     },[values])
+
+    useEffect(()=>{
+        console.log("initial values",initialValues)
+    },[initialValues])
 
     useEffect(()=>{
         updateValues()
@@ -108,14 +114,17 @@ export default function FormGeneratorContextProvider({formValue, disable=false, 
             if(arrayAccessorStartingPosition !==-1){
                 const indexToRemove = Number.parseInt(accessor.slice(arrayAccessorStartingPosition).slice(1,-1));
                 const collectionAccessor = accessor.slice(0,arrayAccessorStartingPosition);
+                // @ts-ignore
                 const array:any[] = values[collectionAccessor];
                 const newArray = array.filter((item,index) => index !== indexToRemove )
                 const newValues = values;
+                // @ts-ignore
                 newValues[collectionAccessor] = newArray;
                 setValues(newValues)
             }
         }else{
             const newValues = values;
+            // @ts-ignore
             delete newValues[accessor]
             setValues(newValues)
         }

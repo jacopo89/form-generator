@@ -7,6 +7,7 @@ import { getNestedValue } from "../../utils/form-generator-utils";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { Divider } from "@mui/material";
+import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
 export default function CollectionFormField({ accessor, nestedForm, addButton: addButtonProps, removeButton: removeButtonProps, initialValues, lockList = false }) {
     const { setFieldValue, disable, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor, values);
@@ -21,9 +22,10 @@ export default function CollectionFormField({ accessor, nestedForm, addButton: a
     const existing = getNestedValue(accessor, values).length;
     // @ts-ignore
     const nestedElements = collectionElement.formElements;
+    const formDescriptor = new FormDescriptor({ elements: nestedElements, initialValues });
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, { disable: disable, formValue: formValue, elements: nestedElements, initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => { setFieldValue(indexAccessor, value); }, children: nestedForm ? nestedForm(index) : undefined }, index), _jsx(Divider, { light: true })] }))] }), index));
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, { disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => { setFieldValue(indexAccessor, value); }, children: nestedForm ? nestedForm(index) : undefined }, index), _jsx(Divider, { light: true })] }))] }), index));
     });
     if (collectionElement === undefined)
         return _jsx("div", { children: accessor });

@@ -7,6 +7,7 @@ import FormGeneratorContextProvider from "../../../form-context/FormGeneratorCon
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Divider } from "@mui/material";
 import FormElement from "../../FormElement";
+import { FormDescriptor } from "../../../form-descriptor/FormDescriptor";
 const nestedBasicElements = [
     {
         Header: "Key",
@@ -53,7 +54,8 @@ export default function DictionaryFormField({ accessor, initialValues }) {
     }, [existingElements]);
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, elements: nestedElements[index], initialValues: initialValues, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
+        const formDescriptor = new FormDescriptor({ elements: nestedElements[index], initialValues });
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
                                     return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
                                 } }) })), _jsx(Divider, { light: true })] }))] }), index));
     });

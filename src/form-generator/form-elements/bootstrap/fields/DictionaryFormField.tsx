@@ -8,6 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import {Divider} from "@mui/material";
 import FormElement from "../../FormElement";
 import { DictionaryElementInterface } from "../../interfaces/DictionaryElementInterface";
+import {FormDescriptor} from "../../../form-descriptor/FormDescriptor";
 
 const nestedBasicElements:FormElements = [
     {
@@ -60,6 +61,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
 
     const nestedForms = existingElements.map((element:any,index:number)=>{
             const indexAccessor = `${accessor}[${index}]`
+        const formDescriptor = new FormDescriptor({elements:nestedElements[index],initialValues})
             return (<Row key={index} className={"mb-3"}>
                     <Col xs={1}>
                         <Button className={"btn-sm p-1 rounded-circle bg-danger"} onClick={() => unsetFieldValue(indexAccessor)}>
@@ -67,7 +69,7 @@ export default function DictionaryFormField({accessor,initialValues}:DictionaryE
                         </Button>
                     </Col>
                     <Col xs={11}>
-                        <FormGeneratorContextProvider disable={disable} formValue={formValue} elements={nestedElements[index]} initialValues={initialValues} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
+                        <FormGeneratorContextProvider disable={disable} formValue={formValue} formDescriptor={formDescriptor} existingValue={getNestedValue(indexAccessor,values)}  accessorRoot={indexAccessor} onChange={(value) => setFieldValue(indexAccessor, value)}>
                             <FormGeneratorContext.Consumer>
                                 {()=>{
                                     return <Row>
