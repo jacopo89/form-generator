@@ -20,14 +20,16 @@ export default class FormDescriptor{
     }
 
     addElement(element:FormDescriptorAddElementInterface, initialValue:any, validationRule?:any){
-        if(element.type==="collection" || element.type==="embedded"){
-            this.elements.push({...element,initialValues:initialValue})
-        }else{
-            this.elements.push(element);
+        const existingElement = this.elements.find(existingElement => existingElement.accessor === element.accessor)
+        if(existingElement===undefined){
+            if(element.type==="collection" || element.type==="embedded"){
+                this.elements.push({...element,initialValues:initialValue})
+            }else{
+                this.elements.push(element);
+            }
+            this.initialValues = {...this.initialValues, [element.accessor]:initialValue}
+            if(validationRule) this.validationSchema.shape({[element.accessor]:validationRule})
         }
-
-        this.initialValues = {...this.initialValues, [element.accessor]:initialValue}
-        if(validationRule) this.validationSchema.shape({[element.accessor]:validationRule})
     }
 
 }

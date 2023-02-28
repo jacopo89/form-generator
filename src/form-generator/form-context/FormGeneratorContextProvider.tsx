@@ -69,13 +69,8 @@ export default function FormGeneratorContextProvider(props:Props){
     },[values, existingValue,accessorRoot,initialValues])
 
     useEffect(()=>{
-        console.log("Value is changing, trying to update parent.",values)
         updateWhenValuesChange()
     },[values])
-
-    useEffect(()=>{
-        console.log("initial values",initialValues)
-    },[initialValues])
 
     useEffect(()=>{
         updateValues()
