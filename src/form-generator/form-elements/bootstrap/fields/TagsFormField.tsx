@@ -2,12 +2,16 @@ import React, {useEffect, useState} from "react";
 // @ts-ignore
 import ReactTags from "react-tag-autocomplete";
 import {Tag, TagsElementInterface} from "../../interfaces/TagElementInterface";
+import {getNestedValue} from "../../utils/form-generator-utils";
 //import "../tagsStyle.css"
 
 export default function TagsFormField(props:TagsElementInterface){
     const {type,values, errors, touched,setFieldValue,accessor,Header} = props
 
     const [tags, setTags] = useState<Tag[]>([])
+    const nestedError = getNestedValue(accessor,errors)
+    const nestedTouched = getNestedValue(accessor,touched)
+    const hasError = nestedTouched && nestedError !== undefined
 
     const onTagDelete = (i:any) => {
         const newTags = [...tags];
@@ -32,7 +36,8 @@ export default function TagsFormField(props:TagsElementInterface){
     };
 
 
-    return <div className="filled form-group tooltip-end-top d-flex">
+    return <div>
         <ReactTags minQueryLength={0} tags={tags} allowNew onDelete={onTagDelete} onAddition={onTagAddition} placeholderText={Header} />
+        <span style={{visibility: hasError ? "visible": "hidden"}} className={"small text-danger"}>{nestedError ?? "error"}</span>
     </div>
 }

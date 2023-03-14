@@ -7,7 +7,8 @@ import SelectElementInterface, {SelectOption} from "../../interfaces/SelectEleme
 
 export default function SelectFormField(element:SelectElementInterface){
     const {type,values,disable, errors,options=[], touched,setFieldValue,accessor,Header} = element
-
+    const nestedError = getNestedValue(accessor,errors)
+    const nestedTouched = getNestedValue(accessor,touched)
     const [value, setValue] = useState<SelectOption|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
 
     const updateSelectValue =  useCallback(()=>{
@@ -20,8 +21,15 @@ export default function SelectFormField(element:SelectElementInterface){
         updateSelectValue()
     },[values])
 
+    const hasError = nestedTouched && nestedError !== undefined
+
     return <>
         <Form.Label>{Header}</Form.Label>
-        <Select isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value?.value)} placeholder={Header} />
+        <Select styles={{
+            control: (baseStyles, state) => ({
+                ...baseStyles,
+                borderColor: hasError  ? "red" : baseStyles.borderColor,
+            })}} isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value?.value)} placeholder={Header} />
+        <span style={{visibility: hasError ? "visible": "hidden"}} className={"small text-danger"}>{nestedError?? "Error"}</span>
     </>
 }
