@@ -8,10 +8,8 @@ import { Form } from "react-bootstrap";
 export default function DateFormField(props) {
     const { type, values, disable, errors, touched, setFieldValue, accessor, Header } = props;
     const handleData = (value) => {
-        /*console.log("value",value)
-        console.log("serialized date", serializeDate(value))*/
         setFieldValue(serializeDate(value));
     };
     const value = getNestedValue(accessor, values);
-    return _jsxs("div", Object.assign({ className: "filled form-group tooltip-end-top" }, { children: [_jsx(Form.Label, { children: Header }), _jsx(DatePicker, { disabled: disable, placeholderText: Header, className: "form-control", selected: value ? normalizeDate(value) : new Date(), onChange: handleData, dateFormat: "dd/MM/yyyy" })] }));
+    return _jsxs("div", { children: [_jsx(Form.Label, { children: Header }), _jsx(DatePicker, { disabled: disable, placeholderText: Header, className: "form-control", selected: value ? normalizeDate(value) : new Date(), onChange: handleData, dateFormat: "dd/MM/yyyy" })] });
 }

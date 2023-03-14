@@ -10,14 +10,11 @@ import {DateElementInterface} from "../../interfaces/DateElementInterface";
 export default function DateFormField(props:DateElementInterface){
     const {type,values,disable, errors, touched,setFieldValue,accessor,Header} = props
     const handleData = (value:any) => {
-        /*console.log("value",value)
-        console.log("serialized date", serializeDate(value))*/
         setFieldValue( serializeDate(value))
     }
     const value = getNestedValue(accessor,values);
-    return <div className="filled form-group tooltip-end-top">
+    return <div>
         <Form.Label>{Header}</Form.Label>
         <DatePicker disabled={disable} placeholderText={Header} className="form-control" selected={value ? normalizeDate(value): new Date()} onChange={handleData} dateFormat={"dd/MM/yyyy"}/>
-        {/*{errors[accessor] && touched[accessor] && <div className="d-block invalid-tooltip">{errors[accessor]}</div>}*/}
     </div>
 }

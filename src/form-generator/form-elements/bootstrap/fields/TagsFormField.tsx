@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import ReactTags from "react-tag-autocomplete";
 import {Tag, TagsElementInterface} from "../../interfaces/TagElementInterface";
 import {getNestedValue} from "../../utils/form-generator-utils";
+import {Form} from "react-bootstrap";
 //import "../tagsStyle.css"
 
 export default function TagsFormField(props:TagsElementInterface){
@@ -37,6 +38,7 @@ export default function TagsFormField(props:TagsElementInterface){
 
 
     return <div>
+        <Form.Label>{Header}</Form.Label>
         <ReactTags minQueryLength={0} tags={tags} allowNew onDelete={onTagDelete} onAddition={onTagAddition} placeholderText={Header} />
         <span style={{visibility: hasError ? "visible": "hidden"}} className={"small text-danger"}>{nestedError ?? "error"}</span>
     </div>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // @ts-ignore
 import ReactTags from "react-tag-autocomplete";
 import { getNestedValue } from "../../utils/form-generator-utils";
+import { Form } from "react-bootstrap";
 //import "../tagsStyle.css"
 export default function TagsFormField(props) {
     const { type, values, errors, touched, setFieldValue, accessor, Header } = props;
@@ -29,5 +30,5 @@ export default function TagsFormField(props) {
         });
         setFieldValue(newTags.map(newKeyword => newKeyword.name));
     };
-    return _jsxs("div", { children: [_jsx(ReactTags, { minQueryLength: 0, tags: tags, allowNew: true, onDelete: onTagDelete, onAddition: onTagAddition, placeholderText: Header }), _jsx("span", Object.assign({ style: { visibility: hasError ? "visible" : "hidden" }, className: "small text-danger" }, { children: nestedError !== null && nestedError !== void 0 ? nestedError : "error" }))] });
+    return _jsxs("div", { children: [_jsx(Form.Label, { children: Header }), _jsx(ReactTags, { minQueryLength: 0, tags: tags, allowNew: true, onDelete: onTagDelete, onAddition: onTagAddition, placeholderText: Header }), _jsx("span", Object.assign({ style: { visibility: hasError ? "visible" : "hidden" }, className: "small text-danger" }, { children: nestedError !== null && nestedError !== void 0 ? nestedError : "error" }))] });
 }
