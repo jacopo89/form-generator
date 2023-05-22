@@ -126,7 +126,7 @@ export default function FormGeneratorContextProvider(props:Props){
 
     }
 
-    return <FormGeneratorContext.Provider value={{formValue:values, disable, values,errors, touched, setFieldValue, unsetFieldValue, elements, submitForm,accessorRoot, isValid,isValidating,isSubmitting}}>
+    return <FormGeneratorContext.Provider value={{formValue:values, disable, values,errors, touched, setFieldValue, unsetFieldValue, elements, submitForm,accessorRoot, isValid,isValidating,isSubmitting,setErrors}}>
         <FormContent onSubmit={onSubmit} formElements={elements} handleSubmit={handleSubmit} children={children} />
     </FormGeneratorContext.Provider>
 }

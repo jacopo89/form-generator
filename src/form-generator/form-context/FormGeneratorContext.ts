@@ -16,6 +16,7 @@ export interface FormContextInterface{
     isValid:boolean,
     isValidating:boolean,
     isSubmitting:boolean
+    setErrors:(errors: FormikErrors<any>) => void
 }
 
 const formContextDefaultValue:FormContextInterface = {
@@ -30,7 +31,8 @@ const formContextDefaultValue:FormContextInterface = {
     disable:false,
     isValid:false,
     isValidating:false,
-    isSubmitting:false
+    isSubmitting:false,
+    setErrors: (errors:any) => {}
 }
 
 

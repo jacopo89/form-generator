@@ -15,6 +15,7 @@ export interface FormContextInterface {
     isValid: boolean;
     isValidating: boolean;
     isSubmitting: boolean;
+    setErrors: (errors: FormikErrors<any>) => void;
 }
 declare const FormGeneratorContext: React.Context<FormContextInterface>;
 export default FormGeneratorContext;

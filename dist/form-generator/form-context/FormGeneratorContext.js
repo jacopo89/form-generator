@@ -11,7 +11,8 @@ const formContextDefaultValue = {
     disable: false,
     isValid: false,
     isValidating: false,
-    isSubmitting: false
+    isSubmitting: false,
+    setErrors: (errors) => { }
 };
 const FormGeneratorContext = React.createContext(formContextDefaultValue);
 export default FormGeneratorContext;

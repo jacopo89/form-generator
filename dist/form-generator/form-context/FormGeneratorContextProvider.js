@@ -88,7 +88,7 @@ export default function FormGeneratorContextProvider(props) {
             setValues(newValues);
         }
     };
-    return _jsx(FormGeneratorContext.Provider, Object.assign({ value: { formValue: values, disable, values, errors, touched, setFieldValue, unsetFieldValue, elements, submitForm, accessorRoot, isValid, isValidating, isSubmitting } }, { children: _jsx(FormContent, { onSubmit: onSubmit, formElements: elements, handleSubmit: handleSubmit, children: children }) }));
+    return _jsx(FormGeneratorContext.Provider, Object.assign({ value: { formValue: values, disable, values, errors, touched, setFieldValue, unsetFieldValue, elements, submitForm, accessorRoot, isValid, isValidating, isSubmitting, setErrors } }, { children: _jsx(FormContent, { onSubmit: onSubmit, formElements: elements, handleSubmit: handleSubmit, children: children }) }));
 }
 // @ts-ignore
 const FormContent = ({ children, onSubmit, formElements, handleSubmit }) => {
