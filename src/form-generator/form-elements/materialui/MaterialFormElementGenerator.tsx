@@ -12,6 +12,7 @@ import EmbeddedFormField from "./fields/EmbeddedFormField";
 import DictionaryFormField from "./fields/DictionaryFormField";
 import WYSIWYGFormField from "./fields/WYSIWYGFormField";
 import PriceFormField from "./fields/PriceFormField";
+import PasswordFormField from "./fields/PasswordFormField";
 
 
 export default function MaterialFormElementGenerator(props: GenericFormElementInterface) {
@@ -19,6 +20,8 @@ export default function MaterialFormElementGenerator(props: GenericFormElementIn
     switch(type){
         case "text":
             return <TextFormField {...props}/>
+        case "password":
+            return <PasswordFormField {...props} />
         case "number":
             return <NumberFormField {...props}/>
         case "select":

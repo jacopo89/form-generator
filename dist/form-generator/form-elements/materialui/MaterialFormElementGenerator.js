@@ -10,11 +10,14 @@ import EmbeddedFormField from "./fields/EmbeddedFormField";
 import DictionaryFormField from "./fields/DictionaryFormField";
 import WYSIWYGFormField from "./fields/WYSIWYGFormField";
 import PriceFormField from "./fields/PriceFormField";
+import PasswordFormField from "./fields/PasswordFormField";
 export default function MaterialFormElementGenerator(props) {
     const { type } = props;
     switch (type) {
         case "text":
             return _jsx(TextFormField, Object.assign({}, props));
+        case "password":
+            return _jsx(PasswordFormField, Object.assign({}, props));
         case "number":
             return _jsx(NumberFormField, Object.assign({}, props));
         case "select":
