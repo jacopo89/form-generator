@@ -1,5 +1,6 @@
 import FormGeneratorThemeContext from "./FormGeneratorThemeContext";
 import { useContext } from "react";
 export default function useFormGeneratorThemeContext() {
-    return useContext(FormGeneratorThemeContext);
+    const { theme, setTheme } = useContext(FormGeneratorThemeContext);
+    return { theme, setTheme };
 }

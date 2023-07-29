@@ -5,10 +5,9 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import FormGeneratorContextProvider from "../../../form-context/FormGeneratorContextProvider";
 import {EmbeddedElementInterface} from "../../interfaces/EmbeddedElementInterface";
 import FormDescriptor from "../../../form-descriptor/FormDescriptor";
-import {Grid} from "@mui/material";
 
 export default function EmbeddedFormField({accessor,nestedForm,initialValues}:EmbeddedElementInterface){
-    const {setFieldValue,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
+    const {setFieldValue,values,elements,accessorRoot, formValue} = useContext(FormGeneratorContext);
     const existingElement = getNestedValue(accessor,values)
     // @ts-ignore
     const embeddedElement = elements.find(element => element.accessor ===accessor);

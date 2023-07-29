@@ -13,7 +13,7 @@ export default function NumberFormField(props:NumberElementInterface){
 
     return <FormGroup>
         <Form.Label>{Header}</Form.Label>
-        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} type="number" name={accessor} placeholder={Header} value={values[accessor]} onChange={(e)=>setFieldValue(parseInt(e.target.value))} />
+        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} type="number" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(parseInt(e.target.value))} />
         <Form.Control.Feedback
             className="font-weight-bold"
             type="invalid"

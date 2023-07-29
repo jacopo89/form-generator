@@ -15,7 +15,6 @@ export default function NumberFormField(props:NumberElementInterface){
             disabled={disable}
             error={nestedTouched && nestedError!==undefined}
             fullWidth
-            label={Header}
             name={accessor}
             onChange={(e)=>setFieldValue(e.target.value)}
             type="number"

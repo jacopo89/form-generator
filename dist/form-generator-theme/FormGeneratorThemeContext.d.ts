@@ -1,6 +1,6 @@
 import React, { SetStateAction } from "react";
 export declare type FormGeneratorTheme = "material-ui" | "bootstrap";
-declare type FormGeneratorContextType = {
+export declare type FormGeneratorContextType = {
     theme: FormGeneratorTheme;
     setTheme: React.Dispatch<SetStateAction<FormGeneratorTheme>>;
 };

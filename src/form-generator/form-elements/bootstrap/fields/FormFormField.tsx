@@ -57,7 +57,7 @@ export default function FormFormField({accessor, addButton:addButtonProps, remov
     const {setFieldValue, disable,values,elements,accessorRoot, formValue, unsetFieldValue} = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor,values)
 
-    const addButton =  ( (addButtonProps) ?  React.cloneElement(addButtonProps,{onClick:(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}) : <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}><AddIcon/></Button>)
+    const addButton =  ( (addButtonProps) ?  React.cloneElement(addButtonProps,{onClick:(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`,initialValues)}}) : <Button type="button" onClick={(e)=>{e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, {...initialValues,accessor:`${accessor}[${existing}]`})}}><AddIcon/></Button>)
     const removeButton = (indexAccessor:string) => {
         return  ( (removeButtonProps) ?  React.cloneElement(removeButtonProps,{onClick:() => unsetFieldValue(indexAccessor)}) : <Button onClick={() => unsetFieldValue(indexAccessor)}><DeleteIcon/></Button>)
     }
