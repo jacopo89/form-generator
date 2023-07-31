@@ -3,5 +3,6 @@ import {FileType} from "../../ElementInterface";
 
 export interface FileElementInterface extends BasicFormElementInterface{
     type:"file",
-    accept: FileType
+    accept: FileType,
+    maxFileSizeMB?: number
 }

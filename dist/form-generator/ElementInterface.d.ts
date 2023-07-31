@@ -56,6 +56,7 @@ export interface EmbeddedElementInterface extends ElementInterface {
 export interface FileElementInterface extends ElementInterface {
     type: "file";
     accept: FileType;
+    maxFileSizeMB?: number;
 }
 export interface PasswordElementInterface extends ElementInterface {
     type: "password";

@@ -10,6 +10,7 @@ import TagsFieldTest from "./TagsFieldTest";
 import EmbeddedFieldTest from "./EmbeddedFieldTest";
 import SelectFieldTest from "./SelectFieldTest";
 import FormFieldTest from "./FormFieldTest";
+import FileFieldTest from "./FileFieldTest";
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
                   </Tab>
                   <Tab eventKey="form" title="Form">
                     <FormFieldTest/>
+                  </Tab>
+                  <Tab eventKey="file" title="File">
+                    <FileFieldTest/>
                   </Tab>
                 </Tabs>
               </div>

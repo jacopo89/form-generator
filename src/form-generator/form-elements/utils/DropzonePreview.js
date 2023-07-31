@@ -4,7 +4,6 @@ import {Col, Row, Spinner} from 'react-bootstrap';
 const DropzonePreview = ({ meta, fileWithMeta }) => {
     const { remove } = fileWithMeta;
     const { name, status, previewUrl, size } = meta;
-
     return (
         <Row className="sw-40 border border-1 border-separator g-0 rounded-sm me-2 mb-2 position-relative z-index-1">
             <Col xs="auto" className="position-relative">
