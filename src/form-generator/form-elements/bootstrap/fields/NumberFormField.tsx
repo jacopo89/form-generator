@@ -6,14 +6,13 @@ import {NumberElementInterface} from "../../interfaces/NumberElementInterface";
 
 
 export default function NumberFormField(props:NumberElementInterface){
-    const {type,values, errors, touched,setFieldValue,accessor,Header} = props
+    const {type,values, errors, touched,setFieldValue,accessor,Header, placeholder, label} = props
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
 
-
     return <FormGroup>
-        <Form.Label>{Header}</Form.Label>
-        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} type="number" name={accessor} placeholder={Header} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(parseInt(e.target.value))} />
+        {label !== false && <Form.Label>{label ?? Header}</Form.Label>}
+        <Form.Control isInvalid={nestedTouched && nestedError!==undefined} type="number" name={accessor} placeholder={placeholder} value={getNestedValue(accessor,values)} onChange={(e)=>setFieldValue(parseInt(e.target.value))} />
         <Form.Control.Feedback
             className="font-weight-bold"
             type="invalid"

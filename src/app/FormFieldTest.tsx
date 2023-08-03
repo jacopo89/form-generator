@@ -25,14 +25,13 @@ const formDescriptor = new FormDescriptor({elements:dictionaryFormElements,initi
 export default function FormFieldTest(){
     const values = useSimulateQuery(
         {credentials:[]},
-        {credentials: [{accessor:"name", type:"text", Header:"nome"}, {accessor:"numero", type:"number", Header: "numerone"}]}
+        {credentials: []}
     )
 
     return <div className={"mx-5 px-5"}>
         <FormGeneratorContextProvider existingValue={values} formDescriptor={formDescriptor} onSubmit={(values)=>{console.log("values",values)}}>
             <FormGeneratorContext.Consumer>
                 {({values})=>{
-                    console.log("values", values)
                     return <>
                         <Dictionary/>
                         <FormGeneratorContextProvider formDescriptor={ new FormDescriptor({elements:values.credentials, initialValues:{}})}/>

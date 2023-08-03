@@ -6,7 +6,7 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import SelectElementInterface, {SelectOption} from "../../interfaces/SelectElementInterface";
 
 export default function SelectFormField(element:SelectElementInterface){
-    const {type,values,disable, errors,options=[], touched,setFieldValue,accessor,Header} = element
+    const {type,values,disable, errors,options=[], touched,setFieldValue,accessor,Header, label, placeholder} = element
     const nestedError = getNestedValue(accessor,errors)
     const nestedTouched = getNestedValue(accessor,touched)
     const [value, setValue] = useState<SelectOption|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
@@ -24,12 +24,12 @@ export default function SelectFormField(element:SelectElementInterface){
     const hasError = nestedTouched && nestedError !== undefined
 
     return <>
-        <Form.Label>{Header}</Form.Label>
+        {label !== false && <Form.Label>{label ?? Header}</Form.Label>}
         <Select styles={{
             control: (baseStyles, state) => ({
                 ...baseStyles,
                 borderColor: hasError  ? "red" : baseStyles.borderColor,
-            })}} isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value?.value)} placeholder={Header} />
+            })}} isDisabled={disable} classNamePrefix="react-select" options={options} value={value} onChange={(value) =>setFieldValue(value?.value)} placeholder={placeholder ?? ""} />
         <span style={{visibility: hasError ? "visible": "hidden"}} className={"small text-danger"}>{nestedError?? "Error"}</span>
     </>
 }

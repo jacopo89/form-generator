@@ -8,21 +8,21 @@ import {FormGeneratorContext} from "../esm";
 
 const companyFormElements:FormElements = [
     {
-        accessor:"textField",
-        type:"text",
-        Header:"Text field"
+        accessor:"dateField",
+        type:"date",
+        Header:"Date field"
     }
 ]
 const initialValues = {
-    textField:null,
+    dateField:null,
 }
 const validationSchema = Yup.object().shape({
-    textField: Yup.string().required('Text field'),
+    dateField: Yup.date().required('date field'),
 })
 
 const formDescriptor = new FormDescriptor({elements:companyFormElements,initialValues, validationSchema})
 
-export default function TextFieldTest(){
+export default function DateFieldTest(){
     return <>
         <FormGeneratorContextProvider formDescriptor={formDescriptor} onSubmit={()=>{}}>
             <FormGeneratorContext.Consumer>
@@ -30,29 +30,29 @@ export default function TextFieldTest(){
                     return <div>
                         <section className={"my-3"}>
                             <h3>Text element standard</h3>
-                            <FormElement accessor="textField"/>
+                            <FormElement accessor="dateField"/>
                         </section>
                         <hr/><hr/>
                         <section className={"my-3"}>
                             <h3>Label manipulation</h3>
                             <hr/>
                             <h5>Custom Label</h5>
-                            <FormElement accessor="textField" label={"Custom label"}/>
+                            <FormElement accessor="dateField" label={"Custom label"}/>
                             <hr/>
                             <h5>No Label</h5>
-                            <FormElement accessor="textField" label={false}/>
+                            <FormElement accessor="dateField" label={false}/>
                         </section>
                         <hr/><hr/>
                         <section className={"my-3"}>
                             <h3>Placeholder</h3>
                             <hr/>
                             <h5>Placeholder</h5>
-                            <FormElement accessor="textField" placeholder={"Custom placeholder"}/>
+                            <FormElement accessor="dateField" placeholder={"Custom placeholder"}/>
                             <hr/>
                             <h5>No placeholder</h5>
-                            <FormElement accessor="textField" />
+                            <FormElement accessor="dateField" />
                         </section>
-                        <button type="submit">SAVE</button>
+                        <button type="submit">save</button>
                     </div>
                 }}
             </FormGeneratorContext.Consumer>

@@ -6,53 +6,52 @@ import FormElement from "../form-generator/form-elements/FormElement";
 import {FormGeneratorContext} from "../esm";
 
 
-const companyFormElements:FormElements = [
+const formElements:FormElements = [
     {
-        accessor:"textField",
-        type:"text",
-        Header:"Text field"
+        accessor:"numberField",
+        type:"number",
+        Header:"Number field"
     }
 ]
 const initialValues = {
-    textField:null,
+    numberField:"",
 }
 const validationSchema = Yup.object().shape({
-    textField: Yup.string().required('Text field'),
+    numberField: Yup.number().required('Text field'),
 })
 
-const formDescriptor = new FormDescriptor({elements:companyFormElements,initialValues, validationSchema})
+const formDescriptor = new FormDescriptor({elements:formElements,initialValues, validationSchema})
 
-export default function TextFieldTest(){
+export default function NumberFieldTest(){
     return <>
-        <FormGeneratorContextProvider formDescriptor={formDescriptor} onSubmit={()=>{}}>
+        <FormGeneratorContextProvider formDescriptor={formDescriptor}>
             <FormGeneratorContext.Consumer>
                 {()=>{
                     return <div>
                         <section className={"my-3"}>
                             <h3>Text element standard</h3>
-                            <FormElement accessor="textField"/>
+                            <FormElement accessor="numberField"/>
                         </section>
                         <hr/><hr/>
                         <section className={"my-3"}>
                             <h3>Label manipulation</h3>
                             <hr/>
                             <h5>Custom Label</h5>
-                            <FormElement accessor="textField" label={"Custom label"}/>
+                            <FormElement accessor="numberField" label={"Custom label"}/>
                             <hr/>
                             <h5>No Label</h5>
-                            <FormElement accessor="textField" label={false}/>
+                            <FormElement accessor="numberField" label={false}/>
                         </section>
                         <hr/><hr/>
                         <section className={"my-3"}>
                             <h3>Placeholder</h3>
                             <hr/>
                             <h5>Placeholder</h5>
-                            <FormElement accessor="textField" placeholder={"Custom placeholder"}/>
+                            <FormElement accessor="numberField" placeholder={"Custom placeholder"}/>
                             <hr/>
                             <h5>No placeholder</h5>
-                            <FormElement accessor="textField" />
+                            <FormElement accessor="numberField" />
                         </section>
-                        <button type="submit">SAVE</button>
                     </div>
                 }}
             </FormGeneratorContext.Consumer>

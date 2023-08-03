@@ -6,38 +6,59 @@ import FormElement from "../form-generator/form-elements/FormElement";
 import {FormGeneratorContext} from "../esm";
 
 
-const companyFormElements:FormElements = [
+const formElements:FormElements = [
     {
-        accessor:"companyName",
+        accessor:"selectField",
         type:"select",
-        Header:"Company name",
-        options:[{label:"CAZZO", value:"cazzo" },{label:"MINCHIA", value:"minchia" }]
+        Header:"Select field",
+        options:[
+            {label: "Padre", value:"padre"},
+            {label: "Madre", value:"madre"}
+        ]
     }
 ]
 const initialValues = {
-    companyName:"minchia",
+    selectField:"",
 }
 const validationSchema = Yup.object().shape({
-    companyName: Yup.string().required('Company name is required'),
+    selectField: Yup.number().required('Text field'),
 })
 
-const formDescriptor = new FormDescriptor({elements:companyFormElements,initialValues, validationSchema})
+const formDescriptor = new FormDescriptor({elements:formElements,initialValues, validationSchema})
 
-export default function SelectFieldTest() {
-
+export default function SelectFieldTest(){
     return <>
         <FormGeneratorContextProvider formDescriptor={formDescriptor}>
             <FormGeneratorContext.Consumer>
                 {()=>{
-                    return <TextElement></TextElement>
+                    return <div>
+                        <section className={"my-3"}>
+                            <h3>Text element standard</h3>
+                            <FormElement accessor="selectField"/>
+                        </section>
+                        <hr/><hr/>
+                        <section className={"my-3"}>
+                            <h3>Label manipulation</h3>
+                            <hr/>
+                            <h5>Custom Label</h5>
+                            <FormElement accessor="selectField" label={"Custom label"}/>
+                            <hr/>
+                            <h5>No Label</h5>
+                            <FormElement accessor="selectField" label={false}/>
+                        </section>
+                        <hr/><hr/>
+                        <section className={"my-3"}>
+                            <h3>Placeholder</h3>
+                            <hr/>
+                            <h5>Placeholder</h5>
+                            <FormElement accessor="selectField" placeholder={"Custom placeholder"}/>
+                            <hr/>
+                            <h5>No placeholder</h5>
+                            <FormElement accessor="selectField" />
+                        </section>
+                    </div>
                 }}
             </FormGeneratorContext.Consumer>
         </FormGeneratorContextProvider>
-    </>
-}
-
-const TextElement= () => {
-    return <>
-        <FormElement accessor="companyName"/>
     </>
 }

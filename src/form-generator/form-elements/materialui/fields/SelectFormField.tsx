@@ -4,7 +4,7 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import {MenuItem, TextField} from "@mui/material";
 
 export default function SelectFormField(element:SelectElementInterface){
-    const {values,disable, errors,options, touched,setFieldValue,accessor,Header} = element
+    const {values,disable, errors,options, touched,setFieldValue,accessor,Header, placeholder, label} = element
 
     const [value, setValue] = useState<SelectOption|undefined>(options.find(option => option.value === getNestedValue(accessor,values) ));
     const nestedError = getNestedValue(accessor,errors)
@@ -24,7 +24,7 @@ export default function SelectFormField(element:SelectElementInterface){
     },[values])
 
     return <>
-        <span>{Header}</span>
+        {label !== false && <span>{label ?? Header}</span>}
         <TextField
             disabled={disable}
             error={nestedTouched && nestedError!==undefined}
@@ -32,6 +32,7 @@ export default function SelectFormField(element:SelectElementInterface){
             helperText={nestedTouched ? (nestedError ?? "") : ""}
             onChange={(e) =>setFieldValue(e.target.value)}
             select
+            placeholder={placeholder}
             value={value?.value??""}
             variant="outlined"
         >

@@ -8,13 +8,18 @@ import {Form} from "react-bootstrap";
 import {DateElementInterface} from "../../interfaces/DateElementInterface";
 
 export default function DateFormField(props:DateElementInterface){
-    const {type,values,disable, errors, touched,setFieldValue,accessor,Header} = props
+    const {values,disable, errors, touched,setFieldValue,accessor,Header, label, placeholder} = props
     const handleData = (value:any) => {
         setFieldValue( serializeDate(value))
     }
     const value = getNestedValue(accessor,values);
+    const nestedError = getNestedValue(accessor,errors)
+    const nestedTouched = getNestedValue(accessor,touched)
+    const hasError = nestedTouched && nestedError !== undefined
+
     return <div>
-        <Form.Label>{Header}</Form.Label>
-        <DatePicker disabled={disable} placeholderText={Header} className="form-control" selected={value ? normalizeDate(value): new Date()} onChange={handleData} dateFormat={"dd/MM/yyyy"}/>
+        {label !== false && <Form.Label>{label ?? Header}</Form.Label>}
+        <DatePicker disabled={disable} placeholderText={placeholder} className="form-control" selected={value ? normalizeDate(value): null} onChange={handleData} dateFormat={"dd/MM/yyyy"}/>
+        <span style={{visibility: hasError ? "visible": "hidden"}} className={"small text-danger"}>{nestedError ?? "error"}</span>
     </div>
 }
