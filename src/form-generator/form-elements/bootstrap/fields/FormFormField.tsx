@@ -29,8 +29,8 @@ const nestedBasicElements:FormElements = [
         options:[
             {label:"Text", value:"text"},
             {label:"Number", value:"number"},
-            {label:"Price", value:"price"},
             {label:"Select", value:"select"},
+            {label:"Date", value:"date"},
         ],
     },
     {
