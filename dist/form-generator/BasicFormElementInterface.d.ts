@@ -8,6 +8,8 @@ export default interface BasicFormElementInterface extends ElementInterface {
     setFieldValue: (value: any) => Promise<void> | Promise<FormikErrors<FormikValues>>;
     accessorRoot?: string;
     disable?: boolean;
+    placeholder?: string;
+    label?: string | false;
 }
 export interface WithButtonElementInterface extends BasicFormElementInterface {
     addButton?: React.ReactHTMLElement<any>;

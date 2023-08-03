@@ -6,10 +6,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { getNestedValue } from "../../utils/form-generator-utils";
 import { Form } from "react-bootstrap";
 export default function DateFormField(props) {
-    const { type, values, disable, errors, touched, setFieldValue, accessor, Header } = props;
+    const { values, disable, errors, touched, setFieldValue, accessor, Header, label, placeholder } = props;
     const handleData = (value) => {
         setFieldValue(serializeDate(value));
     };
     const value = getNestedValue(accessor, values);
-    return _jsxs("div", { children: [_jsx(Form.Label, { children: Header }), _jsx(DatePicker, { disabled: disable, placeholderText: Header, className: "form-control", selected: value ? normalizeDate(value) : new Date(), onChange: handleData, dateFormat: "dd/MM/yyyy" })] });
+    const nestedError = getNestedValue(accessor, errors);
+    const nestedTouched = getNestedValue(accessor, touched);
+    const hasError = nestedTouched && nestedError !== undefined;
+    return _jsxs("div", { children: [label !== false && _jsx(Form.Label, { children: label !== null && label !== void 0 ? label : Header }), _jsx(DatePicker, { disabled: disable, placeholderText: placeholder, className: "form-control", selected: value ? normalizeDate(value) : null, onChange: handleData, dateFormat: "dd/MM/yyyy" }), _jsx("span", Object.assign({ style: { visibility: hasError ? "visible" : "hidden" }, className: "small text-danger" }, { children: nestedError !== null && nestedError !== void 0 ? nestedError : "error" }))] });
 }
