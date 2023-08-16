@@ -11,6 +11,7 @@ import DictionaryFormField from "./fields/DictionaryFormField";
 import WYSIWYGFormField from "./fields/WYSIWYGFormField";
 import PriceFormField from "./fields/PriceFormField";
 import PasswordFormField from "./fields/PasswordFormField";
+import DateFormField from "./fields/DateFormField";
 export default function MaterialFormElementGenerator(props) {
     const { type } = props;
     switch (type) {
@@ -38,6 +39,9 @@ export default function MaterialFormElementGenerator(props) {
             return _jsx(WYSIWYGFormField, Object.assign({}, props));
         case "price":
             return _jsx(PriceFormField, Object.assign({}, props));
+        case "date": {
+            return _jsx(DateFormField, Object.assign({}, props));
+        }
     }
     return _jsx(_Fragment, {});
 }
