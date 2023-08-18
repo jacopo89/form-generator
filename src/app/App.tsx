@@ -13,15 +13,12 @@ import FormFieldTest from "./FormFieldTest";
 import FileFieldTest from "./FileFieldTest";
 import NumberFieldTest from "./NumberFieldTest";
 import DateFieldTest from "./DateFieldTest";
-import {AdapterMoment} from '@mui/x-date-pickers/AdapterMoment'
-import {LocalizationProvider} from '@mui/x-date-pickers';
 import CollectionFieldTest from "./CollectionFieldTest";
 
 function App() {
   const [activeTab, setActiveTab] = useState("text")
 
   return <div className="mx-5 px-5">
-      <LocalizationProvider dateAdapter={AdapterMoment}>
           <FormGeneratorThemeContextProvider theme="bootstrap">
               <FormGeneratorThemeContext.Consumer>
                   {
@@ -73,8 +70,6 @@ function App() {
                   }
               </FormGeneratorThemeContext.Consumer>
           </FormGeneratorThemeContextProvider>
-      </LocalizationProvider>
-
   </div>
 }
 

@@ -4,6 +4,8 @@ import {getNestedValue} from "../../utils/form-generator-utils";
 import {DateElementInterface} from "../../interfaces/DateElementInterface";
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
 import moment from "moment";
+import {AdapterMoment} from '@mui/x-date-pickers/AdapterMoment'
+import {LocalizationProvider} from '@mui/x-date-pickers';
 
 export default function DateFormField(props:DateElementInterface){
     const {values,setFieldValue,accessor,Header,label} = props
@@ -12,7 +14,7 @@ export default function DateFormField(props:DateElementInterface){
         setFieldValue( serializeDate(value))
     }
     const value = getNestedValue(accessor,values);
-    return <>
+    return <LocalizationProvider dateAdapter={AdapterMoment}>
         {label !== false && <span>{label ?? Header}</span>}
         <DatePicker
             className="w-100"
@@ -20,5 +22,5 @@ export default function DateFormField(props:DateElementInterface){
             value={value ? normalizeDate(value) : moment()}
             onChange={handleData}
          />
-    </>
+    </LocalizationProvider>
 }
