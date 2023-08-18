@@ -14,8 +14,8 @@ import FileFieldTest from "./FileFieldTest";
 import NumberFieldTest from "./NumberFieldTest";
 import DateFieldTest from "./DateFieldTest";
 import {AdapterMoment} from '@mui/x-date-pickers/AdapterMoment'
-import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns'
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import {LocalizationProvider} from '@mui/x-date-pickers';
+import CollectionFieldTest from "./CollectionFieldTest";
 
 function App() {
   const [activeTab, setActiveTab] = useState("text")
@@ -32,7 +32,7 @@ function App() {
                                   <Button disabled={theme === "material-ui"} onClick={()=>{setTheme("material-ui")}}>Material - UI</Button>
                                   <Tabs
                                       activeKey={activeTab}
-                                      defaultActiveKey="form"
+                                      defaultActiveKey="collection"
                                       onSelect={(k) => {if(k) setActiveTab(k)}}
                                       className="mb-3"
                                   >
@@ -47,6 +47,9 @@ function App() {
                                       </Tab>
                                       <Tab eventKey="date" title="Date">
                                           <DateFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="collection" title="Collection">
+                                          <CollectionFieldTest/>
                                       </Tab>
                                       <Tab eventKey="dictionary" title="Dictionary">
                                           <DictionaryFieldTest/>
