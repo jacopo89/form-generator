@@ -1,17 +1,14 @@
-import { jsx as _jsx } from "react/jsx-runtime";
-// @ts-ignore
-import DatePicker from "react-datepicker";
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { normalizeDate, serializeDate } from "../../utils/TimeManager";
-import 'react-datepicker/dist/react-datepicker.css';
 import { getNestedValue } from "../../utils/form-generator-utils";
-import { FormControlLabel, FormGroup } from "@mui/material";
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import moment from "moment";
 export default function DateFormField(props) {
-    const { type, values, disable, errors, touched, setFieldValue, accessor, Header } = props;
+    const { values, setFieldValue, accessor, Header, label } = props;
     const handleData = (value) => {
-        /*console.log("value",value)
-        console.log("serialized date", serializeDate(value))*/
+        console.log(value);
         setFieldValue(serializeDate(value));
     };
     const value = getNestedValue(accessor, values);
-    return _jsx(FormGroup, Object.assign({ className: "filled form-group tooltip-end-top" }, { children: _jsx(FormControlLabel, { control: _jsx(DatePicker, { disabled: disable, placeholderText: Header, className: "form-control", selected: value ? normalizeDate(value) : new Date(), onChange: handleData, dateFormat: "dd/MM/yyyy" }), label: Header }) }));
+    return _jsxs(_Fragment, { children: [label !== false && _jsx("span", { children: label !== null && label !== void 0 ? label : Header }), _jsx(DatePicker, { className: "w-100", format: "DD/MM/YYYY", value: value ? normalizeDate(value) : moment(), onChange: handleData })] });
 }

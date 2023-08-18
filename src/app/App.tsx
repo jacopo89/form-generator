@@ -13,60 +13,65 @@ import FormFieldTest from "./FormFieldTest";
 import FileFieldTest from "./FileFieldTest";
 import NumberFieldTest from "./NumberFieldTest";
 import DateFieldTest from "./DateFieldTest";
-
+import {AdapterMoment} from '@mui/x-date-pickers/AdapterMoment'
+import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 function App() {
   const [activeTab, setActiveTab] = useState("text")
 
   return <div className="mx-5 px-5">
-      <FormGeneratorThemeContextProvider theme="bootstrap">
-        <FormGeneratorThemeContext.Consumer>
-          {
-            ({theme, setTheme})=>{
-              return <>
-                <div>
-                  <Button disabled={theme === "bootstrap"} onClick={()=>{setTheme("bootstrap")}}>Bootstrap</Button>
-                  <Button disabled={theme === "material-ui"} onClick={()=>{setTheme("material-ui")}}>Material - UI</Button>
-                  <Tabs
-                      activeKey={activeTab}
-                      defaultActiveKey="form"
-                      onSelect={(k) => {if(k) setActiveTab(k)}}
-                      className="mb-3"
-                  >
-                    <Tab eventKey="text" title="Text">
-                      <TextFieldTest/>
-                    </Tab>
-                    <Tab eventKey="number" title="Number">
-                      <NumberFieldTest/>
-                    </Tab>
-                    <Tab eventKey="select" title="Select">
-                      <SelectFieldTest/>
-                    </Tab>
-                      <Tab eventKey="date" title="Date">
-                          <DateFieldTest/>
-                      </Tab>
-                    <Tab eventKey="dictionary" title="Dictionary">
-                      <DictionaryFieldTest/>
-                    </Tab>
-                    <Tab eventKey="tags" title="Tags">
-                      <TagsFieldTest/>
-                    </Tab>
-                    <Tab eventKey="embedded" title="Embedded">
-                      <EmbeddedFieldTest/>
-                    </Tab>
-                    <Tab eventKey="form" title="Form">
-                      <FormFieldTest/>
-                    </Tab>
-                    <Tab eventKey="file" title="File">
-                      <FileFieldTest/>
-                    </Tab>
-                  </Tabs>
-                </div>
-              </>
-            }
-          }
-        </FormGeneratorThemeContext.Consumer>
-      </FormGeneratorThemeContextProvider>
+      <LocalizationProvider dateAdapter={AdapterMoment}>
+          <FormGeneratorThemeContextProvider theme="bootstrap">
+              <FormGeneratorThemeContext.Consumer>
+                  {
+                      ({theme, setTheme})=>{
+                          return <>
+                              <div>
+                                  <Button disabled={theme === "bootstrap"} onClick={()=>{setTheme("bootstrap")}}>Bootstrap</Button>
+                                  <Button disabled={theme === "material-ui"} onClick={()=>{setTheme("material-ui")}}>Material - UI</Button>
+                                  <Tabs
+                                      activeKey={activeTab}
+                                      defaultActiveKey="form"
+                                      onSelect={(k) => {if(k) setActiveTab(k)}}
+                                      className="mb-3"
+                                  >
+                                      <Tab eventKey="text" title="Text">
+                                          <TextFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="number" title="Number">
+                                          <NumberFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="select" title="Select">
+                                          <SelectFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="date" title="Date">
+                                          <DateFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="dictionary" title="Dictionary">
+                                          <DictionaryFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="tags" title="Tags">
+                                          <TagsFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="embedded" title="Embedded">
+                                          <EmbeddedFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="form" title="Form">
+                                          <FormFieldTest/>
+                                      </Tab>
+                                      <Tab eventKey="file" title="File">
+                                          <FileFieldTest/>
+                                      </Tab>
+                                  </Tabs>
+                              </div>
+                          </>
+                      }
+                  }
+              </FormGeneratorThemeContext.Consumer>
+          </FormGeneratorThemeContextProvider>
+      </LocalizationProvider>
+
   </div>
 }
 
