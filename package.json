@@ -1,6 +1,6 @@
 {
   "name": "form-generator",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,6 @@
     "@types/node": "^16.18.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "cypress": "^12.17.2",
     "prop-types": "^15.8.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
