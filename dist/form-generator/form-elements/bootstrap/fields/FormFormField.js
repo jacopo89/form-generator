@@ -51,9 +51,9 @@ const initialValues = {
 export default function FormFormField({ accessor, addButton: addButtonProps, removeButton: removeButtonProps }) {
     const { setFieldValue, disable, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor, values);
-    const addButton = ((addButtonProps) ? React.cloneElement(addButtonProps, { onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }) : _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, Object.assign(Object.assign({}, initialValues), { accessor: `${accessor}[${existing}]` })); } }, { children: _jsx(AddIcon, {}) })));
+    const addButton = ((addButtonProps) ? React.cloneElement(addButtonProps, { onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }) : _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, Object.assign(Object.assign({}, initialValues), { accessor: `${accessor}[${existing}]` })); } }, { children: _jsx(AddIcon, {}, void 0) }), void 0));
     const removeButton = (indexAccessor) => {
-        return ((removeButtonProps) ? React.cloneElement(removeButtonProps, { onClick: () => unsetFieldValue(indexAccessor) }) : _jsx(Button, Object.assign({ onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })));
+        return ((removeButtonProps) ? React.cloneElement(removeButtonProps, { onClick: () => unsetFieldValue(indexAccessor) }) : _jsx(Button, Object.assign({ onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}, void 0) }), void 0));
     };
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor === accessor);
@@ -78,16 +78,16 @@ export default function FormFormField({ accessor, addButton: addButtonProps, rem
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
         const formDescriptor = new FormDescriptor({ elements: nestedElements[index], initialValues });
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsx(Col, Object.assign({ xs: 11 }, { children: _jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => {
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) }), void 0), _jsx(Col, Object.assign({ xs: 11 }, { children: _jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => {
                             setFieldValue(indexAccessor, Object.assign(Object.assign({}, value), { accessor: _.camelCase(value.Header) }));
                         } }, { children: _jsx(FormGeneratorContext.Consumer, { children: ({ values }) => {
-                                return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "Header" }) })), _jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "type" }) })), values["type"] === "select" && _jsx(Row, { children: _jsx(Col, Object.assign({ xs: 12 }, { children: _jsx(FormElement, { accessor: "options", nestedForm: OptionsForm }) })) })] });
-                            } }) })) }))] }), index));
+                                return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "Header" }, void 0) }), void 0), _jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "type" }, void 0) }), void 0), values["type"] === "select" && _jsx(Row, { children: _jsx(Col, Object.assign({ xs: 12 }, { children: _jsx(FormElement, { accessor: "options", nestedForm: OptionsForm }, void 0) }), void 0) }, void 0)] }, void 0);
+                            } }, void 0) }), void 0) }), void 0)] }), index));
     });
     if (collectionElement === undefined)
-        return _jsx("div", { children: accessor });
-    return _jsxs("div", { children: [nestedForms, addButton] });
+        return _jsx("div", { children: accessor }, void 0);
+    return _jsxs("div", { children: [nestedForms, addButton] }, void 0);
 }
 const OptionsForm = () => {
-    return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "label" }) })), _jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
+    return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "label" }, void 0) }), void 0), _jsx(Col, Object.assign({ xs: 6 }, { children: _jsx(FormElement, { accessor: "value" }, void 0) }), void 0)] }, void 0);
 };

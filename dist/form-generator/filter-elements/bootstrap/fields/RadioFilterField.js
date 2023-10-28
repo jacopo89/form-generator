@@ -6,5 +6,5 @@ export default function RadioFilterField(props) {
     const onChangeRadio = (e) => {
         setFieldValue(e.target.value);
     };
-    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }), _jsx("div", { children: options.map(option => _jsx(Form.Check, { name: accessor, type: "radio", value: option.value, label: option.label, id: option.value, inline: true, onChange: onChangeRadio, checked: getNestedValue(accessor, values) === option.value })) })] });
+    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }, void 0), _jsx("div", { children: options.map(option => _jsx(Form.Check, { name: accessor, type: "radio", value: option.value, label: option.label, id: option.value, inline: true, onChange: onChangeRadio, checked: getNestedValue(accessor, values) === option.value }, void 0)) }, void 0)] }, void 0);
 }

@@ -6,5 +6,5 @@ export default function CheckboxFormField(props) {
     const nestedError = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
     const onChange = (event) => setFieldValue(!getNestedValue(accessor, values));
-    return (_jsx(Checkbox, { name: accessor, checked: getNestedValue(accessor, values), onChange: onChange, inputProps: { 'aria-label': 'controlled' } }));
+    return (_jsx(Checkbox, { name: accessor, checked: getNestedValue(accessor, values), onChange: onChange, inputProps: { 'aria-label': 'controlled' } }, void 0));
 }

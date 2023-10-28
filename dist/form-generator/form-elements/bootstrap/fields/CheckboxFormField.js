@@ -7,5 +7,5 @@ export default function CheckboxFormField(props) {
     const nestedError = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
     const onChange = () => setFieldValue(!getNestedValue(accessor, values));
-    return _jsx(FormGroup, { children: _jsx(Form.Check, { name: accessor, type: "checkbox", label: Header, id: accessor, onChange: onChange, checked: getNestedValue(accessor, values), isInvalid: nestedTouched && nestedError !== undefined, feedback: nestedError, feedbackType: "invalid", feedbackTooltip: true }) });
+    return _jsx(FormGroup, { children: _jsx(Form.Check, { name: accessor, type: "checkbox", label: Header, id: accessor, onChange: onChange, checked: getNestedValue(accessor, values), isInvalid: nestedTouched && nestedError !== undefined, feedback: nestedError, feedbackType: "invalid", feedbackTooltip: true }, void 0) }, void 0);
 }

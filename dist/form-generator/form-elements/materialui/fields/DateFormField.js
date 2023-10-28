@@ -12,5 +12,5 @@ export default function DateFormField(props) {
         setFieldValue(serializeDate(value));
     };
     const value = getNestedValue(accessor, values);
-    return _jsxs(LocalizationProvider, Object.assign({ dateAdapter: AdapterMoment }, { children: [label !== false && _jsx("span", { children: label !== null && label !== void 0 ? label : Header }), _jsx(DatePicker, { className: "w-100", format: "DD/MM/YYYY", value: value ? normalizeDate(value) : moment(), onChange: handleData })] }));
+    return _jsxs(LocalizationProvider, Object.assign({ dateAdapter: AdapterMoment }, { children: [label !== false && _jsx("span", { children: label !== null && label !== void 0 ? label : Header }, void 0), _jsx(DatePicker, { className: "w-100", format: "DD/MM/YYYY", value: value ? normalizeDate(value) : moment(), onChange: handleData }, void 0)] }), void 0);
 }

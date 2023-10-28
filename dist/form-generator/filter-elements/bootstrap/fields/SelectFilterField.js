@@ -16,6 +16,6 @@ export default function SelectFilterField(element) {
         updateSelectValue();
     }, [values]);
     // @ts-ignore
-    const select = _jsx(Select, { classNamePrefix: "react-select", options: options, value: value, onChange: (value) => setFieldValue(value.value), placeholder: Header });
-    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }), select] });
+    const select = _jsx(Select, { classNamePrefix: "react-select", options: options, value: value, onChange: (value) => setFieldValue(value.value), placeholder: Header }, void 0);
+    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }, void 0), select] }, void 0);
 }

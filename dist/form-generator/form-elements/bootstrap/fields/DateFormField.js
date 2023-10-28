@@ -14,5 +14,5 @@ export default function DateFormField(props) {
     const nestedError = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
     const hasError = nestedTouched && nestedError !== undefined;
-    return _jsxs("div", { children: [label !== false && _jsx(Form.Label, { children: label !== null && label !== void 0 ? label : Header }), _jsx(DatePicker, { disabled: disable, placeholderText: placeholder, className: "form-control", selected: value ? normalizeDateBootstrap(value) : null, onChange: handleData, dateFormat: "dd/MM/yyyy" }), _jsx("span", Object.assign({ style: { visibility: hasError ? "visible" : "hidden" }, className: "small text-danger" }, { children: nestedError !== null && nestedError !== void 0 ? nestedError : "error" }))] });
+    return _jsxs("div", { children: [label !== false && _jsx(Form.Label, { children: label !== null && label !== void 0 ? label : Header }, void 0), _jsx(DatePicker, { disabled: disable, placeholderText: placeholder, className: "form-control", selected: value ? normalizeDateBootstrap(value) : null, onChange: handleData, dateFormat: "dd/MM/yyyy" }, void 0), _jsx("span", Object.assign({ style: { visibility: hasError ? "visible" : "hidden" }, className: "small text-danger" }, { children: nestedError !== null && nestedError !== void 0 ? nestedError : "error" }), void 0)] }, void 0);
 }

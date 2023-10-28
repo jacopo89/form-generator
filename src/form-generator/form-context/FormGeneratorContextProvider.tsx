@@ -62,7 +62,8 @@ export default function FormGeneratorContextProvider(props:Props){
 
     const updateWhenValuesChange = useCallback(()=>{
         if(accessorRoot && values!==initialValues){
-            if(values!==existingValue){
+            if(values && values!==existingValue){
+                //@ts-ignore
                 onChange(values)
             }
         }

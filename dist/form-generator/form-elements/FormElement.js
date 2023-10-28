@@ -39,9 +39,9 @@ export default function FormElement(_a) {
     const finalAccessor = accessor;
     if (element) {
         // @ts-ignore
-        return _jsx(FormElementGenerator, Object.assign({ nestedForm: nestedForm }, element, others, { disable: disable, accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor, options: finalOptions }));
+        return _jsx(FormElementGenerator, Object.assign({ nestedForm: nestedForm }, element, others, { disable: disable, accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor, options: finalOptions }), void 0);
     }
-    return _jsx("div", { children: accessor });
+    return _jsx("div", { children: accessor }, void 0);
 }
 export function useFormElementValue(accessor) {
     const { values, errors, touched, setFieldValue, elements, accessorRoot, disable } = useContext(FormGeneratorContext);

@@ -28,7 +28,8 @@ export default function FilterGeneratorContextProvider({ formValue, elements, va
     }, [existingValue, values]);
     const updateWhenValuesChange = useCallback(() => {
         if (accessorRoot && values !== initialValues) {
-            if (values !== existingValue) {
+            if (values && values !== existingValue) {
+                //@ts-ignore
                 onChange(values);
             }
         }
@@ -40,7 +41,7 @@ export default function FilterGeneratorContextProvider({ formValue, elements, va
         updateValues();
     }, [existingValue]);
     useEffect(() => { console.log("formvalue", values); }, [values]);
-    const formContent = (onSubmit) ? _jsx("form", Object.assign({ onSubmit: handleSubmit }, { children: children })) : children;
+    const formContent = (onSubmit) ? _jsx("form", Object.assign({ onSubmit: handleSubmit }, { children: children }), void 0) : children;
     const unsetFieldValue = (accessor) => {
         if (isArrayElementAccessor(accessor)) {
             const arrayAccessorStartingPosition = accessor.lastIndexOf("[");
@@ -60,5 +61,5 @@ export default function FilterGeneratorContextProvider({ formValue, elements, va
             setValues(newValues);
         }
     };
-    return _jsx(FilterGeneratorContext.Provider, Object.assign({ value: { formValue: values, values, errors, touched, setFieldValue, unsetFieldValue, elements, submitForm, accessorRoot } }, { children: formContent }));
+    return _jsx(FilterGeneratorContext.Provider, Object.assign({ value: { formValue: values, values, errors, touched, setFieldValue, unsetFieldValue, elements, submitForm, accessorRoot } }, { children: formContent }), void 0);
 }

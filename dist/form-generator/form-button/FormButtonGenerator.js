@@ -6,10 +6,10 @@ export default function FormButtonGenerator() {
     const theme = useFormGeneratorThemeContext();
     switch (theme.theme) {
         case "material-ui": {
-            return _jsx(MaterialuiButton, {});
+            return _jsx(MaterialuiButton, {}, void 0);
         }
         case "bootstrap": {
-            return _jsx(BootstrapButton, {});
+            return _jsx(BootstrapButton, {}, void 0);
         }
     }
 }

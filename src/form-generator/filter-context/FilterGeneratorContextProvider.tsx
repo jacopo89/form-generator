@@ -57,7 +57,8 @@ export default function FilterGeneratorContextProvider({formValue, elements, val
     const updateWhenValuesChange = useCallback(()=>{
 
         if(accessorRoot && values!==initialValues){
-            if(values!==existingValue){
+            if(values && values!==existingValue){
+                //@ts-ignore
                 onChange(values)
             }
         }

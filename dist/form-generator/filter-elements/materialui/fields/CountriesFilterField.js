@@ -259,6 +259,6 @@ export default function CountriesFilterField(element) {
         }
     }, [accessor, values]);
     // @ts-ignore
-    const select = _jsx(Select, { classNamePrefix: "react-select", options: countries, value: value, onChange: setValue, placeholder: Header });
-    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }), select] });
+    const select = _jsx(Select, { classNamePrefix: "react-select", options: countries, value: value, onChange: setValue, placeholder: Header }, void 0);
+    return _jsxs(_Fragment, { children: [_jsx(Form.Label, { children: Header }, void 0), select] }, void 0);
 }

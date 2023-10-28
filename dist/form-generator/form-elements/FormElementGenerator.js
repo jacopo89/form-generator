@@ -6,10 +6,10 @@ export default function FormElementGenerator(props) {
     const theme = useFormGeneratorThemeContext();
     switch (theme.theme) {
         case "material-ui": {
-            return _jsx(MaterialFormElementGenerator, Object.assign({}, props));
+            return _jsx(MaterialFormElementGenerator, Object.assign({}, props), void 0);
         }
         case "bootstrap": {
-            return _jsx(BootstrapFormElementGenerator, Object.assign({}, props));
+            return _jsx(BootstrapFormElementGenerator, Object.assign({}, props), void 0);
         }
     }
 }

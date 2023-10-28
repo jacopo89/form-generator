@@ -7,5 +7,5 @@ export default function ({ theme: initialTheme, children }) {
                 {
                     return children;
                 }
-            } }) }));
+            } }, void 0) }), void 0);
 }

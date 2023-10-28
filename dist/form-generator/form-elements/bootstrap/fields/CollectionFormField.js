@@ -11,9 +11,9 @@ import FormDescriptor from "../../../form-descriptor/FormDescriptor";
 export default function CollectionFormField({ accessor, nestedForm, addButton: addButtonProps, removeButton: removeButtonProps, initialValues, lockList = false }) {
     const { setFieldValue, disable, values, elements, accessorRoot, formValue, unsetFieldValue } = useContext(FormGeneratorContext);
     const existingElements = getNestedValue(accessor, values);
-    const addButton = (!disable && !lockList) && ((addButtonProps) ? React.cloneElement(addButtonProps, { onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }) : _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }, { children: _jsx(AddIcon, {}) })));
+    const addButton = (!disable && !lockList) && ((addButtonProps) ? React.cloneElement(addButtonProps, { onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }) : _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, initialValues); } }, { children: _jsx(AddIcon, {}, void 0) }), void 0));
     const removeButton = (indexAccessor) => {
-        return (!disable && !lockList) && ((removeButtonProps) ? React.cloneElement(removeButtonProps, { onClick: () => unsetFieldValue(indexAccessor) }) : _jsx(Button, Object.assign({ onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })));
+        return (!disable && !lockList) && ((removeButtonProps) ? React.cloneElement(removeButtonProps, { onClick: () => unsetFieldValue(indexAccessor) }) : _jsx(Button, Object.assign({ onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}, void 0) }), void 0));
     };
     // @ts-ignore
     const collectionElement = elements.find(element => element.accessor === accessor);
@@ -25,9 +25,9 @@ export default function CollectionFormField({ accessor, nestedForm, addButton: a
     const formDescriptor = new FormDescriptor({ elements: nestedElements, initialValues });
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, { disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => { setFieldValue(indexAccessor, value); }, children: nestedForm ? nestedForm(index) : undefined }, index), _jsx(Divider, { light: true })] }))] }), index));
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1, className: "d-flex justify-content-center align-items-center" }, { children: removeButton(indexAccessor) }), void 0), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, { disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => { setFieldValue(indexAccessor, value); }, children: nestedForm ? nestedForm(index) : undefined }, index), _jsx(Divider, { light: true }, void 0)] }), void 0)] }), index));
     });
     if (collectionElement === undefined)
-        return _jsx("div", { children: accessor });
-    return _jsxs("div", { children: [nestedForms, addButton] });
+        return _jsx("div", { children: accessor }, void 0);
+    return _jsxs("div", { children: [nestedForms, addButton] }, void 0);
 }

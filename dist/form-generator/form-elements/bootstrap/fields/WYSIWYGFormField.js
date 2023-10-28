@@ -28,5 +28,5 @@ export default function WYSIWYGFormField(props) {
         updateFromForm();
     }, [values]);
     useEffect(() => { updateValueForm(); }, [value]);
-    return _jsxs("div", Object.assign({ className: "my-3" }, { children: [_jsx("p", { children: Header }), _jsx(ReactQuill, { className: "form-group", modules: modules, theme: "snow", value: value, onChange: (content) => { setValue(content); } })] }));
+    return _jsxs("div", Object.assign({ className: "my-3" }, { children: [_jsx("p", { children: Header }, void 0), _jsx(ReactQuill, { className: "form-group", modules: modules, theme: "snow", value: value, onChange: (content) => { setValue(content); } }, void 0)] }), void 0);
 }

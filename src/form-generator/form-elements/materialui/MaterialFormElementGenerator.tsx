@@ -14,6 +14,7 @@ import WYSIWYGFormField from "./fields/WYSIWYGFormField";
 import PriceFormField from "./fields/PriceFormField";
 import PasswordFormField from "./fields/PasswordFormField";
 import DateFormField from "./fields/DateFormField";
+import TagsFormField from "./fields/TagsFormField";
 
 
 export default function MaterialFormElementGenerator(props: GenericFormElementInterface) {
@@ -43,9 +44,11 @@ export default function MaterialFormElementGenerator(props: GenericFormElementIn
             return <WYSIWYGFormField {...props}/>
         case "price":
             return <PriceFormField {...props}/>
-        case "date":{
+        case "date":
             return <DateFormField {...props} />
-        }
+        case "tags":
+            return <TagsFormField {...props}/>
+
     }
     return <></>
 }

@@ -6,5 +6,5 @@ export default function SwitchFormField(props) {
     const nestedError = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
     const onChange = (event) => setFieldValue(!getNestedValue(accessor, values));
-    return (_jsx(FormGroup, { children: _jsx(FormControlLabel, { control: _jsx(Switch, { onChange: onChange, checked: getNestedValue(accessor, values) }), label: Header }) }));
+    return (_jsx(FormGroup, { children: _jsx(FormControlLabel, { control: _jsx(Switch, { onChange: onChange, checked: getNestedValue(accessor, values) }, void 0), label: Header }, void 0) }, void 0));
 }

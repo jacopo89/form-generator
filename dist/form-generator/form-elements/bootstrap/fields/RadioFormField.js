@@ -9,5 +9,5 @@ export default function RadioFormField(props) {
     const onChangeRadio = (e) => {
         setFieldValue(e.target.value);
     };
-    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }), _jsx("div", { children: options.map(option => _jsx(Form.Check, { isInvalid: nestedTouched && nestedError !== undefined, disabled: disable, name: accessor, type: "radio", value: option.value, label: option.label, id: option.value, inline: true, onChange: onChangeRadio, checked: getNestedValue(accessor, values) === option.value }, option.value)) })] });
+    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }, void 0), _jsx("div", { children: options.map(option => _jsx(Form.Check, { isInvalid: nestedTouched && nestedError !== undefined, disabled: disable, name: accessor, type: "radio", value: option.value, label: option.label, id: option.value, inline: true, onChange: onChangeRadio, checked: getNestedValue(accessor, values) === option.value }, option.value)) }, void 0)] }, void 0);
 }

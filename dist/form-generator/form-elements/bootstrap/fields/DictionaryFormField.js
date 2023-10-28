@@ -55,11 +55,11 @@ export default function DictionaryFormField({ accessor, initialValues }) {
     const nestedForms = existingElements.map((element, index) => {
         const indexAccessor = `${accessor}[${index}]`;
         const formDescriptor = new FormDescriptor({ elements: nestedElements[index], initialValues });
-        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}) })) })), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
-                                    return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }) })), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }) }))] });
-                                } }) })), _jsx(Divider, { light: true })] }))] }), index));
+        return (_jsxs(Row, Object.assign({ className: "mb-3" }, { children: [_jsx(Col, Object.assign({ xs: 1 }, { children: _jsx(Button, Object.assign({ className: "btn-sm p-1 rounded-circle bg-danger", onClick: () => unsetFieldValue(indexAccessor) }, { children: _jsx(DeleteIcon, {}, void 0) }), void 0) }), void 0), _jsxs(Col, Object.assign({ xs: 11 }, { children: [_jsx(FormGeneratorContextProvider, Object.assign({ disable: disable, formValue: formValue, formDescriptor: formDescriptor, existingValue: getNestedValue(indexAccessor, values), accessorRoot: indexAccessor, onChange: (value) => setFieldValue(indexAccessor, value) }, { children: _jsx(FormGeneratorContext.Consumer, { children: () => {
+                                    return _jsxs(Row, { children: [_jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "key" }, void 0) }), void 0), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "type" }, void 0) }), void 0), _jsx(Col, Object.assign({ xs: 4 }, { children: _jsx(FormElement, { accessor: "value" }, void 0) }), void 0)] }, void 0);
+                                } }, void 0) }), void 0), _jsx(Divider, { light: true }, void 0)] }), void 0)] }), index));
     });
     if (collectionElement === undefined)
-        return _jsx("div", { children: accessor });
-    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, {}); } }, { children: "Add" }))] });
+        return _jsx("div", { children: accessor }, void 0);
+    return _jsxs("div", { children: [nestedForms, _jsx(Button, Object.assign({ type: "button", onClick: (e) => { e.preventDefault(); setFieldValue(`${accessor}[${existing}]`, {}); } }, { children: "Add" }), void 0)] }, void 0);
 }

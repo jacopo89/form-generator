@@ -9,5 +9,5 @@ export default function RadioFormField(props) {
     const onChangeRadio = (e) => {
         setFieldValue(e.target.value);
     };
-    return (_jsxs(FormControl, { children: [_jsx(FormLabel, { children: Header }), _jsx(RadioGroup, Object.assign({ name: "accessor", row: true, value: nestedValue, onChange: onChangeRadio }, { children: options.map(option => _jsx(FormControlLabel, { disabled: disable, value: option.value, control: _jsx(Radio, {}), label: option.label }, option.value)) }))] }));
+    return (_jsxs(FormControl, { children: [_jsx(FormLabel, { children: Header }, void 0), _jsx(RadioGroup, Object.assign({ name: "accessor", row: true, value: nestedValue, onChange: onChangeRadio }, { children: options.map(option => _jsx(FormControlLabel, { disabled: disable, value: option.value, control: _jsx(Radio, {}, void 0), label: option.label }, option.value)) }), void 0)] }, void 0));
 }

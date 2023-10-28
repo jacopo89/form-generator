@@ -25,7 +25,7 @@ export default function FilterElement({ accessor, nestedForm }) {
     const finalAccessor = accessor;
     if (element) {
         // @ts-ignore
-        return _jsx(BootstrapFilterElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }));
+        return _jsx(BootstrapFilterElementGenerator, Object.assign({ nestedForm: nestedForm }, element, { accessorRoot: accessorRoot, type: element.type, values: values, errors: errors, touched: touched, setFieldValue: (value) => setFieldValue(finalAccessor, value), Header: element.Header, accessor: finalAccessor }), void 0);
     }
-    return _jsx("div", { children: accessor });
+    return _jsx("div", { children: accessor }, void 0);
 }

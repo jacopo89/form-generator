@@ -8,5 +8,5 @@ export default function PriceFormField(props) {
     const nestedTouched = getNestedValue(accessor, touched);
     const nestedValue = getNestedValue(accessor, values);
     const onChange = (e) => setFieldValue((parseFloat(e.target.value)) * 100);
-    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }), _jsx(Form.Control, { isInvalid: nestedTouched && nestedError !== undefined, type: "number", name: accessor, placeholder: Header, value: nestedValue / 100, onChange: onChange }), _jsx(Form.Control.Feedback, Object.assign({ className: "font-weight-bold", type: "invalid", role: "alert", "aria-label": "from feedback", tooltip: true }, { children: nestedError }))] });
+    return _jsxs(FormGroup, { children: [_jsx(Form.Label, { children: Header }, void 0), _jsx(Form.Control, { isInvalid: nestedTouched && nestedError !== undefined, type: "number", name: accessor, placeholder: Header, value: nestedValue / 100, onChange: onChange }, void 0), _jsx(Form.Control.Feedback, Object.assign({ className: "font-weight-bold", type: "invalid", role: "alert", "aria-label": "from feedback", tooltip: true }, { children: nestedError }), void 0)] }, void 0);
 }

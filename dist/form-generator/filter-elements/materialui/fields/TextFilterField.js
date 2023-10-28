@@ -6,5 +6,5 @@ export default function TextFilterField(props) {
     const errorMessage = getNestedValue(accessor, errors);
     const nestedTouched = getNestedValue(accessor, touched);
     const nestedValue = getNestedValue(accessor, values);
-    return _jsxs(_Fragment, { children: [_jsx("span", { children: Header }), _jsx(TextField, { disabled: disable, fullWidth: true, label: Header, name: accessor, onChange: (e) => setFieldValue(e.target.value), type: "text", value: nestedValue, variant: "outlined" })] });
+    return _jsxs(_Fragment, { children: [_jsx("span", { children: Header }, void 0), _jsx(TextField, { disabled: disable, fullWidth: true, label: Header, name: accessor, onChange: (e) => setFieldValue(e.target.value), type: "text", value: nestedValue, variant: "outlined" }, void 0)] }, void 0);
 }

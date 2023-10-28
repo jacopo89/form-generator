@@ -6,10 +6,10 @@ export default function FilterElementGenerator(props) {
     const theme = useFormGeneratorThemeContext();
     switch (theme.theme) {
         case "material-ui": {
-            return _jsx(MaterialFilterElementGenerator, Object.assign({}, props));
+            return _jsx(MaterialFilterElementGenerator, Object.assign({}, props), void 0);
         }
         case "bootstrap": {
-            return _jsx(BootstrapFilterElementGenerator, Object.assign({}, props));
+            return _jsx(BootstrapFilterElementGenerator, Object.assign({}, props), void 0);
         }
     }
 }
